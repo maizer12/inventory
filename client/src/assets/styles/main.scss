@@ -1,0 +1,22 @@
+@import './null.scss';
+@import './vars.scss';
+@import './common.scss';
+
+body {
+	background-color: #ffffff;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+}
+#root {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+main {
+	flex: 1;
+}
+.container {
+	max-width: 1440px;
+	width: 100%;
+	margin: 0px auto;
+}

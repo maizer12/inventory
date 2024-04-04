@@ -1,0 +1,49 @@
+.sidebar {
+	box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.2);
+	max-width: 220px;
+	width: 100%;
+	padding-top: 60px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.sidebar-user {
+	position: relative;
+	width: fit-content;
+	margin-bottom: 65px;
+
+	img {
+		max-width: 110px;
+		max-height: 110px;
+		border-radius: 50%;
+	}
+
+	&__setting {
+		justify-content: center;
+		align-items: center;
+		width: 40px;
+		height: 40px;
+		background-color: #fff;
+		position: absolute;
+		right: -5px;
+		bottom: 0;
+		border-radius: 50%;
+		box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.2);
+
+		svg {
+			width: 17px;
+			height: 17px;
+		}
+	}
+}
+.menu-link {
+	font-size: 21px;
+	display: block;
+	text-align: center;
+	color: black;
+	margin-bottom: 40px;
+
+	&.active {
+		border-bottom: 4px solid var(--primary);
+	}
+}

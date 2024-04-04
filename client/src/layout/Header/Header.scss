@@ -1,0 +1,31 @@
+.header {
+	padding: 15px 0;
+	box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.2);
+
+	&__inner {
+		align-items: center;
+	}
+
+	&__content {
+		align-items: center;
+	}
+
+	.logo {
+		margin-right: 120px;
+	}
+
+	&__left {
+		svg {
+			color: var(--primary);
+			margin-left: 21px;
+			width: 20px;
+			height: 20px;
+		}
+	}
+}
+.logo {
+	font-size: 17px;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: var(--primary);
+}
