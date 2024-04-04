@@ -1,0 +1,20 @@
+.text {
+	line-height: 1.2;
+	padding: 0;
+	color: var(--blue-light);
+	font-weight: 400;
+	margin: 0;
+
+	&.lg {
+		font-size: 18px;
+	}
+	&.md {
+		font-size: 12px;
+	}
+	&.sm {
+		font-size: 12px;
+	}
+	&.dark {
+		color: var(--black);
+	}
+}

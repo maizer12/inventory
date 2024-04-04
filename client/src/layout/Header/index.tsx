@@ -19,7 +19,7 @@ export const Header: FC = () => {
 					<div className='d-flex align-items-center'>
 						<p className='text'>06 Апр, 2017</p>
 						<p className='text ml-6 d-block'>
-							<Clock9Icon className='' /> 17:20
+							<Clock9Icon strokeWidth={4} /> 17:20
 						</p>
 					</div>
 				</div>

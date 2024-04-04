@@ -1,6 +1,6 @@
 export const navMenu = [
 	{
-		name: 'Заказы',
+		name: 'Приход',
 		url: '/',
 	},
 	{

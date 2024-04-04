@@ -4,7 +4,7 @@
 
 body {
 	background-color: #ffffff;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
 }
 #root {
@@ -19,4 +19,8 @@ main {
 	max-width: 1440px;
 	width: 100%;
 	margin: 0px auto;
+}
+.wrapper {
+	padding: 4% 7%;
+	width: 100%;
 }
