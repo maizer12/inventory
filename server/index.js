@@ -19,6 +19,10 @@ const app = express();
 
 app.use(cors());
 
+app.get('/', (req, res) => {
+	res.json({ message: 'is work' });
+});
+
 const server = http.createServer(app);
 const io = new SocketIo(server, {
 	cors: {

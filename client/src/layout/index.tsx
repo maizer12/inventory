@@ -10,10 +10,10 @@ const Layout: FC<IProps> = ({ children }) => {
 	return (
 		<>
 			<Header />
-			<main className='d-flex'>
+			<div className='d-flex wrapper'>
 				<Sidebar />
 				{children}
-			</main>
+			</div>
 		</>
 	);
 };

@@ -13,14 +13,14 @@ export const Product: FC<ProductProps> = ({ className, moreInfo = false }) => {
 			<div className='product-item__info d-flex align-items-center'>
 				<DotStatus />
 				<img className='product-item__img' src='https://content.rozetka.com.ua/goods/images/big/393386613.jpg' alt='product' />
-				<div>
+				<div className='product-item__desc'>
 					<HTag tag='h3' line={true}>
 						Монитор 23.8" Acer VG243YEbii (UM.QV3EE.E01)
 					</HTag>
 					<PTag size='lg'>SN-12.34567897</PTag>
 				</div>
 			</div>
-			<PTag size='lg' variant='primary'>
+			<PTag size='lg' variant='primary' className='product-item__status'>
 				Свободен
 			</PTag>
 			{moreInfo && (

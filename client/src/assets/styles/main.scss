@@ -13,16 +13,11 @@ body {
 	flex-direction: column;
 }
 main {
-	flex: 1;
-}
-.wrapper {
 	padding: 4% 7%;
 	width: 100%;
 	overflow: auto;
+	position: relative;
 }
-@media (max-width: 1400px) {
-	.wrapper {
-		padding: 3% 6%;
-		width: 100%;
-	}
+.wrapper {
+	flex: 1;
 }

@@ -13,6 +13,8 @@ export const HTag: FC<HTagProps> = ({ tag, children, className = '', variant = '
 			return <h2 className={classNames}>{children}</h2>;
 		case 'h3':
 			return <h3 className={classNames}>{children}</h3>;
+		case 'h4':
+			return <h4 className={classNames}>{children}</h4>;
 		default:
 			return <>{children}</>;
 	}
