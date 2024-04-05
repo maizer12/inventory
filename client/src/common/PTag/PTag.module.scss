@@ -17,4 +17,15 @@
 	&.dark {
 		color: var(--black);
 	}
+	&.primary {
+		color: var(--primary-light);
+	}
+}
+
+@media (max-width: 1400px) {
+	.text {
+		&.lg {
+			font-size: 14px;
+		}
+	}
 }

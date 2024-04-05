@@ -7,7 +7,7 @@ import { Clock9Icon } from 'lucide-react';
 export const Header: FC = () => {
 	return (
 		<header className='header'>
-			<div className='header__inner container justify-content-between d-flex'>
+			<div className='header__inner justify-content-between d-flex'>
 				<div className='header__content d-flex'>
 					<Link to='/' className='logo'>
 						Inventory

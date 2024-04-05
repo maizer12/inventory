@@ -5,11 +5,11 @@ import { HTag, PTag } from '../../common';
 
 export const Table: FC = () => {
 	return (
-		<ul className='main-table mt-5'>
-			<li className='table-item d-flex justify-content-between align-items-center'>
-				<HTag tag='h3' variant='gray' line={true}>
+		<ul className='main-table'>
+			<li className='table-item d-flex justify-content-between align-items-center block'>
+				{/* <HTag tag='h3' variant='gray' line={true}>
 					Длинное предлинное длиннючее название прихода
-				</HTag>
+				</HTag> */}
 				<div className='d-flex align-items-center'>
 					<button className='table-item__menu'>
 						<List strokeWidth={4} />
@@ -29,7 +29,7 @@ export const Table: FC = () => {
 						01 / 07 / 2023
 					</PTag>
 				</div>
-				<div>
+				{/* <div>
 					<PTag size='sm' className='text-center'>
 						0 USD
 					</PTag>
@@ -37,7 +37,7 @@ export const Table: FC = () => {
 						0 UAH
 					</PTag>
 				</div>
-				<button>Delete</button>
+				<button>Delete</button> */}
 			</li>
 		</ul>
 	);

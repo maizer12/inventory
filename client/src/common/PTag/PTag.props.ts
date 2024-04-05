@@ -4,5 +4,5 @@ export interface PTagProps {
 	children: ReactNode;
 	className?: string;
 	size?: 'sm' | 'md' | 'lg';
-	variant?: 'dark';
+	variant?: 'dark' | 'primary';
 }

@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import { Table } from '../components';
+import { OpenProduct, Table } from '../components';
 import { HTag } from '../common';
+import './Home.scss';
 
 const Home: FC = () => {
 	return (
@@ -9,7 +10,10 @@ const Home: FC = () => {
 				<button className='add-btn'>+</button>
 				<HTag tag='h1'>Приходы / 25</HTag>
 			</div>
-			<Table />
+			<div className='order-content'>
+				<Table />
+				<OpenProduct />
+			</div>
 		</section>
 	);
 };

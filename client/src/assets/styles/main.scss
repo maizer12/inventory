@@ -3,7 +3,7 @@
 @import './common.scss';
 
 body {
-	background-color: #ffffff;
+	background-color: #f0f3f5;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
 }
@@ -15,12 +15,13 @@ body {
 main {
 	flex: 1;
 }
-.container {
-	max-width: 1440px;
-	width: 100%;
-	margin: 0px auto;
-}
 .wrapper {
 	padding: 4% 7%;
 	width: 100%;
+}
+@media (max-width: 1400px) {
+	.wrapper {
+		padding: 3% 6%;
+		width: 100%;
+	}
 }
