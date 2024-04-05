@@ -1,0 +1,28 @@
+.select {
+	height: fit-content;
+	position: relative;
+
+	select {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		height: 100%;
+		padding: 6px 12px;
+		border-radius: 4px;
+		border: 1px solid var(--gray);
+		font-weight: 700;
+
+		&::-ms-expand {
+			display: none;
+		}
+	}
+
+	svg {
+		position: absolute;
+		right: 8px;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 18px;
+		pointer-events: none;
+	}
+}

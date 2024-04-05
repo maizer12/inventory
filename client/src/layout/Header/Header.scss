@@ -4,6 +4,8 @@
 	background-color: #fff;
 	padding-left: 11%;
 	padding-right: 7%;
+	position: relative;
+	z-index: 2;
 
 	&__inner {
 		align-items: center;
@@ -15,6 +17,10 @@
 
 	.logo {
 		margin-right: 120px;
+		font-size: 17px;
+		font-weight: 500;
+		text-transform: uppercase;
+		color: var(--primary-dark);
 	}
 
 	&__left {
@@ -26,10 +32,4 @@
 			height: 14px;
 		}
 	}
-}
-.logo {
-	font-size: 17px;
-	font-weight: 500;
-	text-transform: uppercase;
-	color: var(--primary);
 }

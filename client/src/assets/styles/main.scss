@@ -18,6 +18,7 @@ main {
 .wrapper {
 	padding: 4% 7%;
 	width: 100%;
+	overflow: auto;
 }
 @media (max-width: 1400px) {
 	.wrapper {

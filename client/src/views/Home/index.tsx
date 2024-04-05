@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { OpenProduct, Table } from '../components';
-import { HTag } from '../common';
+import { OpenProduct, Table } from '../../components';
+import { HTag } from '../../common';
 import './Home.scss';
 
 const Home: FC = () => {
