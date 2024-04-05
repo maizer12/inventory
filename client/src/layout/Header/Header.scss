@@ -22,14 +22,19 @@
 		text-transform: uppercase;
 		color: var(--primary-dark);
 	}
+}
 
-	&__left {
-		svg {
-			color: var(--primary);
-			margin-left: 24px;
-			margin-right: 4px;
-			width: 14px;
-			height: 14px;
-		}
+.time-status {
+	.clock-icon {
+		color: var(--primary);
+		margin-left: 24px;
+		margin-right: 4px;
+		width: 14px;
+		height: 14px;
+	}
+	.user-icon {
+		width: 20px;
+		margin-right: 2px;
+		margin-left: auto;
 	}
 }

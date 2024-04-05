@@ -15,7 +15,7 @@ const Sidebar: FC = () => {
 			</div>
 			<nav className='sidebar-menu'>
 				{navMenu.map(e => (
-					<NavLink to={e.url} className='menu-link'>
+					<NavLink to={e.url} className='menu-link' key={e.url}>
 						{e.name}
 					</NavLink>
 				))}
