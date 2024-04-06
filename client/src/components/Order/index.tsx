@@ -5,6 +5,6 @@ import { useAppSelector } from '../../hooks/redux';
 
 export const OrderTable: FC = () => {
   const { items } = useAppSelector((state) => state.orderSlice);
-  console.log(items);
+
   return <ul className="main-table">{!!items.length && items.map((e) => <OrderItem key={e._id} item={e} />)}</ul>;
 };

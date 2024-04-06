@@ -1,20 +1,32 @@
 .open-product {
   position: relative;
   height: fit-content;
+  min-height: 320px;
 
   &__close {
     position: absolute;
     transform: translate(50%, -50%);
     right: 0;
+    transition: 0.4s ease-in-out;
+    color: var(--blue);
 
     svg {
       width: 18px;
-      color: var(--blue);
+      transition: 0.4s ease-in-out;
+    }
+
+    &:hover {
+      color: #a70202;
+
+      svg {
+        width: 24px;
+      }
     }
   }
 
   &__header {
     padding: 27px 31px;
+    border-bottom: 1px solid var(--gray);
   }
 
   &__btn {
@@ -29,5 +41,15 @@
       color: #fff;
       border-radius: 50%;
     }
+  }
+}
+
+.wrapper-info {
+  width: 100%;
+  max-width: 100%;
+  min-height: 140px;
+
+  svg {
+    display: block;
   }
 }

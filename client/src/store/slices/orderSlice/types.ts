@@ -6,4 +6,5 @@ export interface CardsTypes {
   status: '' | 'err' | 'loading';
   products: IProduct[];
   productsLoading: boolean;
+  openOrder: null | IOrder;
 }

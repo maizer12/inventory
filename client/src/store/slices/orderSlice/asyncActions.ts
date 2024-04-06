@@ -9,6 +9,6 @@ export const fetchOrders = createAsyncThunk('cards/fetchOrders', async () => {
 });
 
 export const fetchOrderProducts = createAsyncThunk('cards/fetchOrderProducts', async (id: string) => {
-  const res = await axios.get<IProduct[]>('/api/order/' + id);
+  const res = await axios.get<IProduct[]>('/order/' + id);
   return res.data;
 });

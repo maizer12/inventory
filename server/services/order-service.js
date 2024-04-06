@@ -40,7 +40,7 @@ class OrderService {
         throw new Error('Order not found');
       }
 
-      return order;
+      return order.products;
     } catch (error) {
       console.error('Error retrieving order with products:', error);
       throw error;

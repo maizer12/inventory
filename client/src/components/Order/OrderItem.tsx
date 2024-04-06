@@ -2,19 +2,31 @@ import { List, Trash2 } from 'lucide-react';
 import { HTag, PTag } from '../../common';
 import { FC } from 'react';
 import { IOrder } from '../../models/IOrder';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { setOpenProduct } from '../../store/slices/orderSlice';
+import { fetchOrderProducts } from '../../store/slices/orderSlice/asyncActions';
 
 interface IProps {
   item: IOrder;
 }
 
 const OrderItem: FC<IProps> = ({ item }) => {
+  const dispatch = useAppDispatch();
+  const active = useAppSelector((state) => state.orderSlice.openOrder);
+  const checkActive = !!active && active._id === item._id ? 'active-btn' : '';
+
+  const openProducts = () => {
+    dispatch(setOpenProduct(item));
+    dispatch(fetchOrderProducts(item._id));
+  };
+
   return (
     <li className="order-item mb-3 d-flex align-items-center block">
       <HTag tag="h3" variant="gray" line={true} className="order-item__title">
         {item.title}
       </HTag>
       <div className="d-flex align-items-center">
-        <button className="order-item__menu">
+        <button className={'order-item__menu ' + checkActive} onClick={openProducts}>
           <List strokeWidth={4} />
         </button>
         <div>

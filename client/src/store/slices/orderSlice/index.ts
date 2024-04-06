@@ -1,18 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { CardsTypes } from './types';
 import { fetchOrders, fetchOrderProducts } from './asyncActions';
+import { IOrder } from '../../../models/IOrder';
 
 const initialState: CardsTypes = {
   items: [],
   status: '',
   products: [],
   productsLoading: false,
+  openOrder: null,
 };
 
 const cardsSlice = createSlice({
   name: 'cardsSlice',
   initialState,
-  reducers: {},
+  reducers: {
+    setOpenProduct(state, action: { payload: IOrder | null }) {
+      state.openOrder = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder.addCase(fetchOrders.pending, (state) => {
       state.status = 'loading';
@@ -25,11 +31,12 @@ const cardsSlice = createSlice({
       state.status = 'err';
     });
     builder.addCase(fetchOrderProducts.pending, (state) => {
-      state.status = 'loading';
+      state.products = [];
+      state.productsLoading = true;
     });
     builder.addCase(fetchOrderProducts.fulfilled, (state, action) => {
-      state.status = '';
       state.products = action.payload;
+      state.productsLoading = false;
     });
     builder.addCase(fetchOrderProducts.rejected, (state) => {
       state.productsLoading = false;
@@ -37,6 +44,6 @@ const cardsSlice = createSlice({
   },
 });
 
-//export const {} = cardsSlice.actions;
+export const { setOpenProduct } = cardsSlice.actions;
 
 export default cardsSlice.reducer;

@@ -1,15 +1,15 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import { OpenProduct, DeleteOrder, OrderTable } from '../../components';
 import { HTag } from '../../common';
 import cn from 'classnames';
-import { useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchOrders } from '../../store/slices/orderSlice/asyncActions';
 import './Home.scss';
 
 const Home: FC = () => {
   const dispatch = useAppDispatch();
-  const [isProducts, setIsProducts] = useState(true);
-  const className = cn({ ['show-product']: isProducts });
+  const { openOrder } = useAppSelector((state) => state.orderSlice);
+  const className = cn({ ['show-product']: !!openOrder });
 
   useEffect(() => {
     dispatch(fetchOrders());
@@ -24,7 +24,7 @@ const Home: FC = () => {
         </div>
         <div className="order-content">
           <OrderTable />
-          <OpenProduct />
+          {!!openOrder && <OpenProduct />}
         </div>
       </section>
       {/* <DeleteOrder /> */}
