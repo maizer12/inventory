@@ -3,6 +3,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import { checkAuth } from './utils/checkAuth.js';
 import orderRoutes from './routes/order-routes.js';
+import productRoutes from './routes/product-routes.js';
 import AuthRoutes from './routes/AuthRoutes.js';
 import userRoutes from './routes/user-routes.js';
 import multer from 'multer';
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api', orderRoutes);
+app.use('/api', productRoutes);
 
 const server = http.createServer(app);
 const io = new SocketIo(server, {

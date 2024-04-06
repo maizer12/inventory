@@ -12,6 +12,22 @@ class OrderService {
     }
   }
 
+  async addToOrder(productId, orderId) {
+    try {
+      const order = await OrderModel.findById(orderId);
+      if (!order) {
+        throw new Error('Order not found');
+      }
+
+      order.products.push(productId);
+      await order.save();
+      return order;
+    } catch (error) {
+      console.error('Error adding product to order:', error);
+      throw error;
+    }
+  }
+
   async getAll() {
     try {
       const orders = await OrderModel.aggregate([
