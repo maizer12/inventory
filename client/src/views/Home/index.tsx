@@ -8,7 +8,7 @@ import './Home.scss';
 
 const Home: FC = () => {
   const dispatch = useAppDispatch();
-  const [isProducts, setIsProducts] = useState(false);
+  const [isProducts, setIsProducts] = useState(true);
   const className = cn({ ['show-product']: isProducts });
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Home: FC = () => {
         </div>
         <div className="order-content">
           <OrderTable />
-          {/* <OpenProduct /> */}
+          <OpenProduct />
         </div>
       </section>
       {/* <DeleteOrder /> */}

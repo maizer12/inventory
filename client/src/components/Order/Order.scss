@@ -5,6 +5,11 @@
 }
 .order-item {
   padding: 18px 44px;
+  justify-content: space-between;
+
+  &__date {
+    margin-left: 25px;
+  }
 
   &__menu {
     color: var(--blue);

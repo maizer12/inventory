@@ -9,8 +9,8 @@ interface IProps {
 
 const OrderItem: FC<IProps> = ({ item }) => {
   return (
-    <li className="order-item mb-3 d-flex justify-content-between align-items-center block">
-      <HTag tag="h3" variant="gray" line={true}>
+    <li className="order-item mb-3 d-flex align-items-center block">
+      <HTag tag="h3" variant="gray" line={true} className="order-item__title">
         {item.title}
       </HTag>
       <div className="d-flex align-items-center">
@@ -24,7 +24,7 @@ const OrderItem: FC<IProps> = ({ item }) => {
           <PTag>Продукта</PTag>
         </div>
       </div>
-      <div>
+      <div className="order-item__date">
         <PTag size="sm" className="text-center">
           07 / 23
         </PTag>
@@ -32,7 +32,7 @@ const OrderItem: FC<IProps> = ({ item }) => {
           01 / 07 / 2023
         </PTag>
       </div>
-      <div>
+      <div className="order-item__balance">
         <PTag size="sm" className="text-center">
           0 USD
         </PTag>

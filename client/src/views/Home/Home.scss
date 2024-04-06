@@ -8,6 +8,16 @@
     grid-template-columns: 3.2fr 6fr;
     gap: 20px;
   }
+
+  .order-item {
+    justify-content: left;
+
+    &__title,
+    &__balance,
+    &__remove {
+      display: none;
+    }
+  }
 }
 
 @media (max-width: 1400px) {
