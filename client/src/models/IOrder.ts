@@ -5,5 +5,6 @@ export interface IOrder {
   date: string | Date;
   amountUSD: number;
   amountUAH: number;
+  productCount: number;
   __v?: number;
 }

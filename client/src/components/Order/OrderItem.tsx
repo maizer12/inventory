@@ -19,7 +19,7 @@ const OrderItem: FC<IProps> = ({ item }) => {
         </button>
         <div>
           <HTag tag="h3" variant="gray">
-            23
+            {item.productCount}
           </HTag>
           <PTag>Продукта</PTag>
         </div>

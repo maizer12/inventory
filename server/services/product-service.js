@@ -16,7 +16,7 @@ class ProductService {
   async createProductWithOrder(productData, orderId) {
     try {
       const product = await this.create(productData);
-      await orderService.addToOrder(product._id, orderId);
+      await orderService.addToOrder(product, orderId);
 
       return product;
     } catch (error) {

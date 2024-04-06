@@ -12,18 +12,37 @@ class OrderService {
     }
   }
 
-  async addToOrder(productId, orderId) {
+  async addToOrder(product, orderId) {
     try {
       const order = await OrderModel.findById(orderId);
       if (!order) {
         throw new Error('Order not found');
       }
 
-      order.products.push(productId);
+      order.products.push(product._id);
+
+      order.amountUSD += product.priceUSD;
+      order.amountUAH += product.priceUAH;
+
       await order.save();
       return order;
     } catch (error) {
       console.error('Error adding product to order:', error);
+      throw error;
+    }
+  }
+
+  async getOrderWithProducts(orderId) {
+    try {
+      const order = await OrderModel.findById(orderId).populate('products').exec();
+
+      if (!order) {
+        throw new Error('Order not found');
+      }
+
+      return order;
+    } catch (error) {
+      console.error('Error retrieving order with products:', error);
       throw error;
     }
   }
