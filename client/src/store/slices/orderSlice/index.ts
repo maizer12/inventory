@@ -12,6 +12,7 @@ const initialState: CardsTypes = {
   openOrder: null,
   createOrderModal: false,
   createProductModal: false,
+  deleteOrderItem: null,
 };
 
 const cardsSlice = createSlice({
@@ -32,6 +33,13 @@ const cardsSlice = createSlice({
     },
     createProductWidthOrder(state, action: { payload: IProduct }) {
       state.products = [action.payload, ...state.products];
+    },
+    setDeleteOrderItem(state, action: { payload: IOrder | null }) {
+      state.deleteOrderItem = action.payload;
+    },
+    deleteOrder(state, action: { payload: string }) {
+      state.items = state.items.filter((e) => e._id !== action.payload);
+      state.deleteOrderItem = null;
     },
   },
   extraReducers(builder) {
@@ -59,7 +67,14 @@ const cardsSlice = createSlice({
   },
 });
 
-export const { setOpenProduct, setCreateOrderModal, createOrder, createProductWidthOrder, setCreateProductModal } =
-  cardsSlice.actions;
+export const {
+  setOpenProduct,
+  setCreateOrderModal,
+  createOrder,
+  createProductWidthOrder,
+  setCreateProductModal,
+  setDeleteOrderItem,
+  deleteOrder,
+} = cardsSlice.actions;
 
 export default cardsSlice.reducer;

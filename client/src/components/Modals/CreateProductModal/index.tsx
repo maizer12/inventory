@@ -1,6 +1,5 @@
 import { FC, useState } from 'react';
 import { Button, HTag, Modal, Input, CalendarInput, Select } from '../../../common';
-import './CreateProductModal.scss';
 import axios from '../../../api';
 import { Save } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';

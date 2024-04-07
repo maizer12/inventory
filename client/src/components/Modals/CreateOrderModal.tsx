@@ -39,7 +39,7 @@ export const CreateOrderModal: FC = () => {
           <CalendarInput className="mb-3" setDate={setDate} date={date} />
         </div>
         <div className="delete-order__footer d-flex justify-content-end modal-footer">
-          <button className="delete-order__close">Отменить</button>
+          <button className="delete-modal__close">Отменить</button>
           <Button className="create-order__save" onClick={clickCreate}>
             <Save />
             Створити

@@ -67,6 +67,16 @@ class OrderService {
       throw err;
     }
   }
+
+  async delete(id) {
+    try {
+      const res = await OrderModel.findByIdAndDelete(id);
+      return { message: 'is good' };
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+  }
 }
 
 export default new OrderService();

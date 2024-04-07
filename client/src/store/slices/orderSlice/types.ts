@@ -9,4 +9,5 @@ export interface CardsTypes {
   openOrder: null | IOrder;
   createOrderModal: boolean;
   createProductModal: boolean;
+  deleteOrderItem: IOrder | null;
 }

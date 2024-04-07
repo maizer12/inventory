@@ -97,7 +97,7 @@
   width: 740px;
 
   &__remove {
-    color: #db0000;
+    color: #db0000 !important;
   }
 
   &__close {
@@ -127,5 +127,16 @@
     h3 {
       margin-bottom: 5px;
     }
+  }
+
+  .order-item {
+    border: 0;
+    border-top: 1px solid var(--gray);
+    border-radius: 0;
+    margin-bottom: 0 !important;
+  }
+  .order-item__remove,
+  .order-item__menu {
+    display: none;
   }
 }

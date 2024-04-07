@@ -3,7 +3,7 @@ import { HTag, PTag } from '../../common';
 import { FC } from 'react';
 import { IOrder } from '../../models/IOrder';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { setOpenProduct } from '../../store/slices/orderSlice';
+import { setDeleteOrderItem, setOpenProduct } from '../../store/slices/orderSlice';
 import { fetchOrderProducts } from '../../store/slices/orderSlice/asyncActions';
 import { normalizeDate } from '../../helpers/dateFormatter';
 
@@ -19,6 +19,10 @@ const OrderItem: FC<IProps> = ({ item }) => {
   const openProducts = () => {
     dispatch(setOpenProduct(item));
     dispatch(fetchOrderProducts(item._id));
+  };
+
+  const clickDelete = () => {
+    dispatch(setDeleteOrderItem(item));
   };
 
   const { day, month, year, numMonth } = normalizeDate(item.date);
@@ -55,7 +59,7 @@ const OrderItem: FC<IProps> = ({ item }) => {
           {item.amountUAH} UAH
         </PTag>
       </div>
-      <button className="order-item__remove">
+      <button className="order-item__remove" onClick={clickDelete}>
         <Trash2 />
       </button>
     </li>
