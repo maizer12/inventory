@@ -5,7 +5,7 @@ import productController from '../controllers/product-controller.js';
 
 const router = express.Router();
 
-//router.get('/orders', ordersController.getAll);
+router.get('/products', productController.getAll);
 router.post('/product/order/:orderId', productController.createProductWithOrder);
 router.delete('/product/:id', productController.delete);
 

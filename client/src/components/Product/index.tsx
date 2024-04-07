@@ -6,6 +6,8 @@ import cn from 'classnames';
 import './Product.scss';
 import { useAppDispatch } from '../../hooks/redux';
 import { setDeleteProductItem } from '../../store/slices/productSlice';
+import { arrStates, arrStatus } from './_constant';
+import { dataFormatter } from '../../helpers/dateFormatter';
 
 export const Product: FC<ProductProps> = ({ className, moreInfo = false, item }) => {
   const dispatch = useAppDispatch();
@@ -24,35 +26,35 @@ export const Product: FC<ProductProps> = ({ className, moreInfo = false, item })
           <HTag tag="h3" line={true}>
             {item.name}
           </HTag>
-          <PTag size="lg">SN-12.34567897</PTag>
+          <PTag size="lg">{item.serialNumber}</PTag>
         </div>
       </div>
       <PTag size="lg" variant="primary" className="product-item__status">
-        Свободен
+        {arrStatus[item.status]}
       </PTag>
       {moreInfo && (
         <>
           <div>
-            <PTag size="md" variant="dark" className="d-flex">
-              <PTag>с </PTag> 06/04/2017
+            <PTag size="md" variant="dark">
+              с {dataFormatter(item.warrantyStartDate)}
             </PTag>
-            <PTag size="md" variant="dark" className="d-flex">
-              <PTag>по </PTag> 08/04/2017
+            <PTag size="md" variant="dark">
+              по {dataFormatter(item.warrantyEndDate)}
             </PTag>
           </div>
-          <PTag size="md">Новый</PTag>
           <div>
-            <PTag>2 500$</PTag>
-            <PTag size="md" variant="dark" className="d-flex">
-              250 000.50 UAH
+            <PTag>{item.priceUSD}$</PTag>
+            <PTag size="md" variant="dark">
+              {item.priceUAH} UAH
             </PTag>
           </div>
+          <HTag tag="h3">{arrStates[item.state]}</HTag>
           <HTag line={true} tag="h3">
-            456
+            Дополнительный заголовок, который я не добавил в базу данных из-за лени
           </HTag>
           <div>
             <PTag size="sm">06/12</PTag>
-            <PTag size="md" variant="dark" className="d-flex">
+            <PTag size="md" variant="dark">
               06 / Сен / 2017
             </PTag>
           </div>

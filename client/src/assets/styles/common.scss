@@ -67,6 +67,7 @@
 
 .create-modal {
   min-width: 470px;
+  max-width: 620px;
 
   &__title {
     padding-bottom: 16px;
@@ -142,15 +143,30 @@
 }
 
 .remove-btn {
-  width: 21px;
   color: var(--blue);
   transition: 0.6s;
 
   svg {
-    width: 100%;
+    width: 21px;
   }
 
   &:hover {
     color: rgb(153, 0, 0);
+  }
+}
+.label-money {
+  max-width: 100%;
+  width: 100%;
+  position: relative;
+
+  h3 {
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+  }
+
+  input {
+    padding-right: 100px;
   }
 }

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ProductSliceTypes } from './types';
-import { fetchOrderProducts } from './asyncActions';
+import { fetchOrderProducts, fetchProducts } from './asyncActions';
 import { IProduct } from '../../../models/IProduct';
 
 const initialState: ProductSliceTypes = {
@@ -38,6 +38,17 @@ const productSlice = createSlice({
       state.isLoading = false;
     });
     builder.addCase(fetchOrderProducts.rejected, (state) => {
+      state.isLoading = false;
+    });
+    builder.addCase(fetchProducts.pending, (state) => {
+      state.items = [];
+      state.isLoading = true;
+    });
+    builder.addCase(fetchProducts.fulfilled, (state, action) => {
+      state.items = action.payload;
+      state.isLoading = false;
+    });
+    builder.addCase(fetchProducts.rejected, (state) => {
       state.isLoading = false;
     });
   },

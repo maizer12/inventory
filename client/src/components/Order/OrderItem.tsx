@@ -28,7 +28,7 @@ const OrderItem: FC<IProps> = ({ item }) => {
   const { day, month, year, numMonth } = normalizeDate(item.date);
 
   return (
-    <li className="order-item mb-3 d-flex align-items-center block">
+    <li className="order-item mb-3 d-grid block">
       <HTag tag="h3" variant="gray" line={true} className="order-item__title">
         {item.title}
       </HTag>

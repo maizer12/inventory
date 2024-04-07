@@ -27,3 +27,8 @@ export const getDateTime = () => {
     time: `${hours}:${minutes}`,
   };
 };
+
+export const dataFormatter = (date: Date) => {
+  const { day, numMonth, year } = normalizeDate(date);
+  return `${day} / ${numMonth} / ${year}`;
+};

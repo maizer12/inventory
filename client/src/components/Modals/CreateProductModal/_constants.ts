@@ -1,20 +1,20 @@
 export const statusProduct = [
   {
-    name: 'Новий',
-    value: 0,
-  },
-  {
-    name: 'Б/У',
-    value: 1,
-  },
-];
-export const stateProduct = [
-  {
     name: 'Свободен',
     value: 0,
   },
   {
     name: 'В ремонте',
+    value: 1,
+  },
+];
+export const stateProduct = [
+  {
+    name: 'Новий',
+    value: 0,
+  },
+  {
+    name: 'Б/У',
     value: 1,
   },
 ];
@@ -24,7 +24,7 @@ export const typeProduct = [
     value: 'phone',
   },
   {
-    name: 'laptop',
+    name: 'Laptop',
     value: 'laptop',
   },
   {

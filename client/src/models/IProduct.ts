@@ -11,4 +11,5 @@ export interface IProduct {
   type: string;
   createdAt: Date;
   updatedAt: Date;
+  state: number;
 }

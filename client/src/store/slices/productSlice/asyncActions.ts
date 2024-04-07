@@ -6,3 +6,8 @@ export const fetchOrderProducts = createAsyncThunk('cards/fetchOrderProducts', a
   const res = await axios.get<IProduct[]>('/order/' + id);
   return res.data;
 });
+
+export const fetchProducts = createAsyncThunk('cards/fetchProducts', async () => {
+  const res = await axios.get<IProduct[]>('/products');
+  return res.data;
+});

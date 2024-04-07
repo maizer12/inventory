@@ -9,6 +9,10 @@ const OrderSchema = new Schema(
       required: true,
       trim: true,
     },
+    productCount: {
+      type: Number,
+      default: 0,
+    },
     products: [
       {
         type: Schema.Types.ObjectId,

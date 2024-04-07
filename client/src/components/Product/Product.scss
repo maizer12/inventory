@@ -22,17 +22,15 @@
   &:first-child {
     border: 0;
   }
+
+  p {
+    text-wrap: nowrap;
+  }
 }
 .more-info {
   column-gap: 60px;
-}
-@media (max-width: 1400px) {
-  .product-item {
-    padding: 8px 16px 8px 28px;
 
-    &__img {
-      max-width: 55px;
-      max-height: 40px;
-    }
+  .product-item__info {
+    max-width: fit-content;
   }
 }

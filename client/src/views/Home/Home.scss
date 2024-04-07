@@ -10,6 +10,7 @@
   }
 
   .order-item {
+    display: flex !important;
     justify-content: left;
 
     &__title,

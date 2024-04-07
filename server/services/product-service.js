@@ -13,6 +13,16 @@ class ProductService {
     }
   }
 
+  async getAll() {
+    try {
+      const products = await Product.find();
+      return products;
+    } catch (error) {
+      console.error('Error creating product:', error);
+      throw error;
+    }
+  }
+
   async createProductWithOrder(productData, orderId) {
     try {
       const product = await this.create({ ...productData, order: orderId });

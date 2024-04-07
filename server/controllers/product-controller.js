@@ -15,11 +15,11 @@ class ProductController {
   }
   async getAll(req, res) {
     try {
-      const orders = await orderService.getAll();
-      res.json(orders);
+      const products = await productService.getAll();
+      res.json(products);
     } catch (err) {
       res.status(404).json({
-        message: 'Failed to get orders!',
+        message: 'Failed to get products!',
       });
     }
   }

@@ -21,7 +21,7 @@ export const DeleteProductModal: FC<IProps> = ({ item }) => {
     try {
       const id = item._id;
       await axios.delete(`/product/${id}`);
-      //dispatch(deleteOrder(id));
+      dispatch(deleteOrder(id));
     } catch (err) {
       console.log(err);
     }

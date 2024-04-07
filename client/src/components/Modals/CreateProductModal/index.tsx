@@ -17,8 +17,8 @@ export const CreateProductModal: FC = () => {
   const [type, setType] = useState<string | number>('phone');
   const nameInput = useInput('');
   const serialNumber = useInput('');
-  const UAH = useInput('');
-  const USD = useInput('');
+  const UAH = useInput(0);
+  const USD = useInput(0);
 
   const dispatch = useAppDispatch();
 
@@ -65,9 +65,15 @@ export const CreateProductModal: FC = () => {
           <HTag tag="h4" className="mb-2">
             Цена:
           </HTag>
-          <div className="d-flex create-modal__date mb-3">
-            <Input placeholder="UAH" className="mb-4" type="number" {...UAH} />
-            <Input placeholder="USD" className="mb-4" type="number" {...USD} />
+          <div className="d-flex create-modal__date mb-4">
+            <label className="label-money">
+              <Input placeholder="UAH" min={0} type="number" {...UAH} />
+              <HTag tag="h3">UAH</HTag>
+            </label>
+            <label className="label-money">
+              <Input placeholder="USD" min={0} type="number" {...USD} />
+              <HTag tag="h3">USD</HTag>
+            </label>
           </div>
           <div className="create-modal__selects d-flex">
             <div className="create-modal__select d-flex align-items-center">
