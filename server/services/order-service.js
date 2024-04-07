@@ -55,6 +55,11 @@ class OrderService {
             productCount: { $size: '$products' },
           },
         },
+        {
+          $sort: {
+            createdAt: -1,
+          },
+        },
       ]);
       return orders;
     } catch (err) {

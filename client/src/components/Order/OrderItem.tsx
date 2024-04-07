@@ -5,6 +5,7 @@ import { IOrder } from '../../models/IOrder';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { setOpenProduct } from '../../store/slices/orderSlice';
 import { fetchOrderProducts } from '../../store/slices/orderSlice/asyncActions';
+import { normalizeDate } from '../../helpers/dateFormatter';
 
 interface IProps {
   item: IOrder;
@@ -19,6 +20,8 @@ const OrderItem: FC<IProps> = ({ item }) => {
     dispatch(setOpenProduct(item));
     dispatch(fetchOrderProducts(item._id));
   };
+
+  const { day, month, year, numMonth } = normalizeDate(item.date);
 
   return (
     <li className="order-item mb-3 d-flex align-items-center block">
@@ -38,18 +41,18 @@ const OrderItem: FC<IProps> = ({ item }) => {
       </div>
       <div className="order-item__date">
         <PTag size="sm" className="text-center">
-          07 / 23
+          {`${numMonth.toString().padStart(2, '0')} / ${year}`}
         </PTag>
         <PTag size="lg" className="text-center" variant="dark">
-          01 / 07 / 2023
+          {`${day} / ${month} / ${year}`}
         </PTag>
       </div>
       <div className="order-item__balance">
         <PTag size="sm" className="text-center">
-          0 USD
+          {item.amountUSD} USD
         </PTag>
         <PTag size="lg" className="text-center" variant="dark">
-          0 UAH
+          {item.amountUAH} UAH
         </PTag>
       </div>
       <button className="order-item__remove">

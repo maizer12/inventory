@@ -2,7 +2,7 @@ export interface IOrder {
   _id: string;
   title: string;
   productsSum: 0;
-  date: string | Date;
+  date: Date;
   amountUSD: number;
   amountUAH: number;
   productCount: number;

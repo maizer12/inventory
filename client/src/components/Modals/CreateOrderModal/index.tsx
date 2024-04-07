@@ -3,34 +3,48 @@ import { Button, HTag, Modal, Input, CalendarInput } from '../../../common';
 import './CreateOrderModal.scss';
 import axios from '../../../api';
 import { Save } from 'lucide-react';
+import { useAppDispatch } from '../../../hooks/redux';
+import { createOrder, setCreateOrderModal } from '../../../store/slices/orderSlice';
+import { IOrder } from '../../../models/IOrder';
 
 export const CreateOrderModal: FC = () => {
   const [date, setDate] = useState(new Date());
+  const [title, setTitle] = useState('');
+  const dispatch = useAppDispatch();
+  const setModal = (bool: boolean) => {
+    dispatch(setCreateOrderModal(bool));
+  };
 
-  const createOrder = async () => {
+  const clickCreate = async () => {
     try {
-      console.log(123);
-      const res = await axios.post('/orders', {
-        title: '456',
+      const { data } = await axios.post<IOrder>('/orders', {
+        title,
+        date,
       });
+      dispatch(createOrder(data));
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    <Modal>
+    <Modal setClose={setModal}>
       <div className="create-order">
         <HTag tag="h2" className="create-order__title modal-padding">
           Створити замовлення
         </HTag>
         <div className="modal-padding">
-          <Input placeholder="Назва замовлення" className="mb-4" />
+          <Input
+            placeholder="Назва замовлення"
+            className="mb-4"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
           <CalendarInput className="mb-3" setDate={setDate} date={date} />
         </div>
         <div className="delete-order__footer d-flex justify-content-end modal-footer">
           <button className="delete-order__close">Отменить</button>
-          <Button className="create-order__save" onClick={createOrder}>
+          <Button className="create-order__save" onClick={clickCreate}>
             <Save />
             Створити
           </Button>

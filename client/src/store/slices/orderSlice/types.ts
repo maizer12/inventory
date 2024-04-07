@@ -7,4 +7,5 @@ export interface CardsTypes {
   products: IProduct[];
   productsLoading: boolean;
   openOrder: null | IOrder;
+  createOrderModal: boolean;
 }
