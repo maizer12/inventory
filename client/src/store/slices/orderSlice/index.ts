@@ -8,7 +8,18 @@ const initialState: CardsTypes = {
   status: '',
   products: [],
   productsLoading: false,
-  openOrder: null,
+  openOrder: {
+    _id: '66124faea12a269e4a31626f',
+    title: 'заказ 45',
+    products: [],
+    date: new Date(),
+    amountUSD: 0,
+    amountUAH: 0,
+    createdAt: '2024-04-07T07:47:58.372Z',
+    updatedAt: '2024-04-07T07:47:58.372Z',
+    __v: 0,
+    productCount: 0,
+  },
   createOrderModal: false,
 };
 

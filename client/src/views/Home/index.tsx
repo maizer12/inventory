@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { OpenProduct, OrderTable, DeleteOrderModal, CreateOrderModal } from '../../components';
+import { OpenProduct, OrderTable, DeleteOrderModal, CreateOrderModal, CreateProductModal } from '../../components';
 import { HTag } from '../../common';
 import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
@@ -36,6 +36,7 @@ const Home: FC = () => {
       </section>
       {/* <DeleteOrderModal /> */}
       {createOrderModal && <CreateOrderModal />}
+      <CreateProductModal />
     </main>
   );
 };

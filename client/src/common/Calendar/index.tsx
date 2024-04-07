@@ -14,7 +14,7 @@ export const CalendarInput: FC<CalendarProps> = ({ className, date, setDate }) =
 
   return (
     <label className={styles.calendar + ` ${className}`}>
-      <DatePicker selected={date} onChange={(date) => changeDate(date)} />
+      <DatePicker selected={date} onChange={(date) => changeDate(date)} maxDate={new Date()} />
     </label>
   );
 };

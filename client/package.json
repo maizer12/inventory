@@ -26,7 +26,8 @@
     "react-transition-group": "^4.4.5",
     "sass": "^1.74.1",
     "scss": "^0.2.4",
-    "socket.io-client": "^4.7.5"
+    "socket.io-client": "^4.7.5",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
