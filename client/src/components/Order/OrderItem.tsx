@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { IOrder } from '../../models/IOrder';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { setDeleteOrderItem, setOpenProduct } from '../../store/slices/orderSlice';
-import { fetchOrderProducts } from '../../store/slices/orderSlice/asyncActions';
+import { fetchOrderProducts } from '../../store/slices/productSlice/asyncActions';
 import { normalizeDate } from '../../helpers/dateFormatter';
 
 interface IProps {

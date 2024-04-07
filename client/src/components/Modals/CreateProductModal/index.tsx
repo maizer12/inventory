@@ -3,7 +3,7 @@ import { Button, HTag, Modal, Input, CalendarInput, Select } from '../../../comm
 import axios from '../../../api';
 import { Save } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import { createProductWidthOrder, setCreateProductModal } from '../../../store/slices/orderSlice';
+import { createProduct, setCreateProductModal } from '../../../store/slices/productSlice';
 import { stateProduct, statusProduct, typeProduct } from './_constants';
 import { useInput } from '../../../hooks/useInput';
 import { IProduct } from '../../../models/IProduct';
@@ -43,7 +43,7 @@ export const CreateProductModal: FC = () => {
         imageUrl: 'https://content.rozetka.com.ua/goods/images/big/393386613.jpg',
       };
       const { data } = await axios.post<IProduct>(`/product/order/${_id}`, body);
-      dispatch(createProductWidthOrder(data));
+      dispatch(createProduct(data));
     } catch (err) {
       console.log(err);
     }
@@ -66,8 +66,8 @@ export const CreateProductModal: FC = () => {
             Цена:
           </HTag>
           <div className="d-flex create-modal__date mb-3">
-            <Input placeholder="UAH" className="mb-4" {...UAH} />
-            <Input placeholder="USD" className="mb-4" {...USD} />
+            <Input placeholder="UAH" className="mb-4" type="number" {...UAH} />
+            <Input placeholder="USD" className="mb-4" type="number" {...USD} />
           </div>
           <div className="create-modal__selects d-flex">
             <div className="create-modal__select d-flex align-items-center">
@@ -85,7 +85,7 @@ export const CreateProductModal: FC = () => {
           </div>
         </div>
         <div className="delete-order__footer d-flex justify-content-end modal-footer">
-          <button className="delete-order__close">Отменить</button>
+          <button className="delete-modal__close">Отменить</button>
           <Button className="create-order__save" onClick={clickCreate}>
             <Save />
             Створити
