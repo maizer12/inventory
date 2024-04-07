@@ -8,6 +8,16 @@ export const statusProduct = [
     value: 1,
   },
 ];
+export const stateProduct = [
+  {
+    name: 'Свободен',
+    value: 0,
+  },
+  {
+    name: 'В ремонте',
+    value: 1,
+  },
+];
 export const typeProduct = [
   {
     name: 'Phone',

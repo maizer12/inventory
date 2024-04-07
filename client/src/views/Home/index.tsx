@@ -9,7 +9,7 @@ import { setCreateOrderModal } from '../../store/slices/orderSlice';
 
 const Home: FC = () => {
   const dispatch = useAppDispatch();
-  const { openOrder, createOrderModal } = useAppSelector((state) => state.orderSlice);
+  const { openOrder, createOrderModal, createProductModal } = useAppSelector((state) => state.orderSlice);
   const className = cn({ ['show-product']: !!openOrder });
 
   useEffect(() => {
@@ -34,9 +34,9 @@ const Home: FC = () => {
           {!!openOrder && <OpenProduct />}
         </div>
       </section>
-      {/* <DeleteOrderModal /> */}
+      <DeleteOrderModal />
       {createOrderModal && <CreateOrderModal />}
-      <CreateProductModal />
+      {createProductModal && <CreateProductModal />}
     </main>
   );
 };

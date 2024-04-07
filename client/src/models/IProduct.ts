@@ -9,7 +9,6 @@ export interface IProduct {
   priceUSD: number;
   priceUAH: number;
   type: string;
-  incomeTitle: string;
   createdAt: Date;
   updatedAt: Date;
 }

@@ -2,25 +2,16 @@ import { createSlice } from '@reduxjs/toolkit';
 import { CardsTypes } from './types';
 import { fetchOrders, fetchOrderProducts } from './asyncActions';
 import { IOrder } from '../../../models/IOrder';
+import { IProduct } from '../../../models/IProduct';
 
 const initialState: CardsTypes = {
   items: [],
   status: '',
   products: [],
   productsLoading: false,
-  openOrder: {
-    _id: '66124faea12a269e4a31626f',
-    title: 'заказ 45',
-    products: [],
-    date: new Date(),
-    amountUSD: 0,
-    amountUAH: 0,
-    createdAt: '2024-04-07T07:47:58.372Z',
-    updatedAt: '2024-04-07T07:47:58.372Z',
-    __v: 0,
-    productCount: 0,
-  },
+  openOrder: null,
   createOrderModal: false,
+  createProductModal: false,
 };
 
 const cardsSlice = createSlice({
@@ -33,8 +24,14 @@ const cardsSlice = createSlice({
     setCreateOrderModal(state, action: { payload: boolean }) {
       state.createOrderModal = action.payload;
     },
+    setCreateProductModal(state, action: { payload: boolean }) {
+      state.createProductModal = action.payload;
+    },
     createOrder(state, action: { payload: IOrder }) {
       state.items = [action.payload, ...state.items];
+    },
+    createProductWidthOrder(state, action: { payload: IProduct }) {
+      state.products = [action.payload, ...state.products];
     },
   },
   extraReducers(builder) {
@@ -62,6 +59,7 @@ const cardsSlice = createSlice({
   },
 });
 
-export const { setOpenProduct, setCreateOrderModal, createOrder } = cardsSlice.actions;
+export const { setOpenProduct, setCreateOrderModal, createOrder, createProductWidthOrder, setCreateProductModal } =
+  cardsSlice.actions;
 
 export default cardsSlice.reducer;

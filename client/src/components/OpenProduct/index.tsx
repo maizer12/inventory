@@ -1,6 +1,6 @@
 import { HTag, Loader } from '../../common';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { setOpenProduct } from '../../store/slices/orderSlice';
+import { setOpenProduct, setCreateProductModal } from '../../store/slices/orderSlice';
 import { Product } from '../Product';
 import './OpenProduct.scss';
 import { X } from 'lucide-react';
@@ -13,6 +13,10 @@ export const OpenProduct = () => {
     dispatch(setOpenProduct(null));
   };
 
+  const openCreateProduct = () => {
+    dispatch(setCreateProductModal(true));
+  };
+
   return (
     <div className="open-product block">
       <button className="open-product__close button-round" onClick={closeOpenProducts}>
@@ -22,7 +26,7 @@ export const OpenProduct = () => {
         <HTag tag="h2" className="mb-4">
           {openOrder?.title}
         </HTag>
-        <button className="open-product__btn d-flex align-items-center">
+        <button className="open-product__btn d-flex align-items-center" onClick={openCreateProduct}>
           <span className="d-flex justify-content-center align-items-center">+</span>
           Добавить продукт
         </button>

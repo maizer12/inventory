@@ -12,11 +12,7 @@ export const Product: FC<ProductProps> = ({ className, moreInfo = false, item })
     <li className={classNames}>
       <div className="product-item__info d-flex align-items-center">
         <DotStatus />
-        <img
-          className="product-item__img"
-          src="https://content.rozetka.com.ua/goods/images/big/393386613.jpg"
-          alt="product"
-        />
+        <img className="product-item__img" src={item.imageUrl} alt="product" />
         <div className="product-item__desc">
           <HTag tag="h3" line={true}>
             {item.name}

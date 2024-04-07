@@ -9,6 +9,11 @@
   column-gap: 14px;
   color: var(--blue);
   transition: 0.6s;
+  justify-content: center;
+
+  svg {
+    width: 14px;
+  }
 
   &:hover {
     transform: scale(1.1);

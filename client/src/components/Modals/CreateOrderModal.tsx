@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { Button, HTag, Modal, Input, CalendarInput } from '../../common';
+import { Button, Modal, Input, CalendarInput } from '../../common';
 import axios from '../../api';
 import { Save } from 'lucide-react';
 import { useAppDispatch } from '../../hooks/redux';
@@ -27,11 +27,8 @@ export const CreateOrderModal: FC = () => {
   };
 
   return (
-    <Modal setClose={setModal}>
+    <Modal setClose={setModal} title="Створити замовлення">
       <div className="create-order">
-        <HTag tag="h2" className="create-order__title modal-padding">
-          Створити замовлення
-        </HTag>
         <div className="modal-padding">
           <Input
             placeholder="Назва замовлення"

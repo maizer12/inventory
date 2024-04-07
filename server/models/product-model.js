@@ -33,6 +33,12 @@ const ProductSchema = new Schema(
       enum: [0, 1],
       default: 0,
     },
+    state: {
+      type: Number,
+      required: true,
+      enum: [0, 1],
+      default: 0,
+    },
     priceUSD: {
       type: Number,
       required: true,
@@ -42,11 +48,6 @@ const ProductSchema = new Schema(
       required: true,
     },
     type: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    incomeTitle: {
       type: String,
       required: true,
       trim: true,

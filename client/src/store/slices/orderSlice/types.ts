@@ -8,4 +8,5 @@ export interface CardsTypes {
   productsLoading: boolean;
   openOrder: null | IOrder;
   createOrderModal: boolean;
+  createProductModal: boolean;
 }
