@@ -6,11 +6,12 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchOrders } from '../../store/slices/orderSlice/asyncActions';
 import './Home.scss';
 import { setCreateOrderModal } from '../../store/slices/orderSlice';
+import { DeleteProductModal } from '../../components/Modals/DeleteModal/DeleteProductModal';
 
 const Home: FC = () => {
   const dispatch = useAppDispatch();
   const { openOrder, createOrderModal, deleteOrderItem } = useAppSelector((state) => state.orderSlice);
-  const { createProductModal } = useAppSelector((state) => state.productSlice);
+  const { createProductModal, deleteProductItem } = useAppSelector((state) => state.productSlice);
   const className = cn({ ['show-product']: !!openOrder });
 
   useEffect(() => {
@@ -35,6 +36,7 @@ const Home: FC = () => {
           {!!openOrder && <OpenProduct />}
         </div>
       </section>
+      {!!deleteProductItem && <DeleteProductModal item={deleteProductItem} />}
       {!!deleteOrderItem && <DeleteOrderModal item={deleteOrderItem} />}
       {createOrderModal && <CreateOrderModal />}
       {createProductModal && <CreateProductModal />}

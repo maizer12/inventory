@@ -15,7 +15,7 @@ class ProductService {
 
   async createProductWithOrder(productData, orderId) {
     try {
-      const product = await this.create(productData);
+      const product = await this.create({ ...productData, order: orderId });
       await orderService.addToOrder(product, orderId);
 
       return product;
@@ -25,16 +25,13 @@ class ProductService {
     }
   }
 
-  async getAll() {
+  async delete(id) {
     try {
-      const orders = await OrderModel.aggregate([
-        {
-          $addFields: {
-            productCount: { $size: '$products' },
-          },
-        },
-      ]);
-      return orders;
+      const product = await Product.findById(id);
+      await orderService.removeToOrder(product);
+      await Product.findByIdAndDelete(id);
+
+      return { message: 'is good' };
     } catch (err) {
       console.log(err);
       throw err;

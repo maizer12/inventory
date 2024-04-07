@@ -4,9 +4,16 @@ import { Trash2 } from 'lucide-react';
 import { ProductProps } from './Product.types';
 import cn from 'classnames';
 import './Product.scss';
+import { useAppDispatch } from '../../hooks/redux';
+import { setDeleteProductItem } from '../../store/slices/productSlice';
 
 export const Product: FC<ProductProps> = ({ className, moreInfo = false, item }) => {
+  const dispatch = useAppDispatch();
   const classNames = cn(className, 'product-item', 'd-flex', { 'more-info': moreInfo });
+
+  const clickRemove = () => {
+    dispatch(setDeleteProductItem(item));
+  };
 
   return (
     <li className={classNames}>
@@ -51,7 +58,7 @@ export const Product: FC<ProductProps> = ({ className, moreInfo = false, item })
           </div>
         </>
       )}
-      <button className="product-item__delete">
+      <button className="product-item__delete remove-btn" onClick={clickRemove}>
         <Trash2 />
       </button>
     </li>

@@ -23,6 +23,18 @@ class ProductController {
       });
     }
   }
+
+  async delete(req, res) {
+    try {
+      const id = req.params.id;
+      const message = await productService.delete(id);
+      res.json(message);
+    } catch (err) {
+      res.status(404).json({
+        message: 'Failed to get orders!',
+      });
+    }
+  }
 }
 
 export default new ProductController();

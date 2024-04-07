@@ -52,6 +52,10 @@ const ProductSchema = new Schema(
       required: true,
       trim: true,
     },
+    order: {
+      type: Schema.Types.ObjectId,
+      ref: 'Order',
+    },
   },
   { timestamps: true },
 );

@@ -59,7 +59,7 @@ const OrderItem: FC<IProps> = ({ item }) => {
           {item.amountUAH} UAH
         </PTag>
       </div>
-      <button className="order-item__remove" onClick={clickDelete}>
+      <button className="order-item__remove remove-btn" onClick={clickDelete}>
         <Trash2 />
       </button>
     </li>

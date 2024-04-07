@@ -7,6 +7,7 @@ const initialState: ProductSliceTypes = {
   items: [],
   isLoading: false,
   createProductModal: false,
+  deleteProductItem: null,
 };
 
 const productSlice = createSlice({
@@ -18,6 +19,13 @@ const productSlice = createSlice({
     },
     createProduct(state, action: { payload: IProduct }) {
       state.items = [action.payload, ...state.items];
+    },
+    setDeleteProductItem(state, action: { payload: IProduct | null }) {
+      state.deleteProductItem = action.payload;
+    },
+    deleteOrder(state, action: { payload: string }) {
+      state.items = state.items.filter((e) => e._id !== action.payload);
+      state.deleteProductItem = null;
     },
   },
   extraReducers(builder) {
@@ -35,6 +43,6 @@ const productSlice = createSlice({
   },
 });
 
-export const { createProduct, setCreateProductModal } = productSlice.actions;
+export const { createProduct, setCreateProductModal, setDeleteProductItem, deleteOrder } = productSlice.actions;
 
 export default productSlice.reducer;

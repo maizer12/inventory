@@ -4,4 +4,5 @@ export interface ProductSliceTypes {
   items: [] | IProduct[];
   isLoading: boolean;
   createProductModal: boolean;
+  deleteProductItem: null | IProduct;
 }

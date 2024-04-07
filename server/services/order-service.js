@@ -32,6 +32,26 @@ class OrderService {
     }
   }
 
+  async removeToOrder(product) {
+    try {
+      console.log(product);
+      const order = await OrderModel.findById(product.order);
+      if (!order) {
+        throw new Error('Order not found');
+      }
+      order.products = order.products.filter((p) => p.toString() != product._id.toString());
+
+      order.amountUSD -= product.priceUSD;
+      order.amountUAH -= product.priceUAH;
+
+      await order.save();
+      return order;
+    } catch (error) {
+      console.error('Error adding product to order:', error);
+      throw error;
+    }
+  }
+
   async getOrderWithProducts(orderId) {
     try {
       const order = await OrderModel.findById(orderId).populate('products').exec();
