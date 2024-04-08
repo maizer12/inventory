@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 import './Products.scss';
-import { HTag, Loader, PTag, Select } from '../../common';
+import { EmptyTable, HTag, Loader, PTag, Select } from '../../common';
 import { Product } from '../../components';
 import { useTypeProduct, useStatusProduct } from '../../components/Modals/CreateProductModal/_constants';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
@@ -37,9 +37,11 @@ const Products: FC = () => {
         <Loader full={true} />
       ) : (
         <ul className="product-table scroll-style">
-          {items.map((e) => (
-            <Product className="block table-item mb-4" key={e._id} moreInfo={true} item={e} />
-          ))}
+          {items.length ? (
+            items.map((e) => <Product className="block table-item mb-4" key={e._id} moreInfo={true} item={e} />)
+          ) : (
+            <EmptyTable />
+          )}
         </ul>
       )}
     </main>

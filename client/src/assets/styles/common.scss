@@ -97,6 +97,10 @@
 .delete-modal {
   width: 740px;
 
+  .order-item {
+    grid-template-columns: 4fr 1fr 1fr 1fr;
+  }
+
   &__remove {
     color: #db0000 !important;
   }

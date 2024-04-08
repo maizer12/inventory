@@ -1,4 +1,4 @@
-export interface IProductForm {
+export interface IProductBase {
   name: string;
   serialNumber: string;
   warrantyStartDate: Date;
@@ -10,18 +10,14 @@ export interface IProductForm {
   state: number | string;
 }
 
-export interface IProduct {
+export interface IProductForm extends IProductBase {}
+
+export interface IProduct extends IProductBase {
   _id: string;
-  name: string;
-  serialNumber: string;
   imageUrl: string;
-  warrantyStartDate: Date;
-  warrantyEndDate: Date;
-  status: number;
-  priceUSD: number;
-  priceUAH: number;
-  type: string;
   createdAt: Date;
   updatedAt: Date;
+  status: number;
+  type: string;
   state: number;
 }

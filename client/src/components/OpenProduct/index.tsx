@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { HTag, Loader } from '../../common';
+import { EmptyTable, HTag, Loader } from '../../common';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { setOpenProduct } from '../../store/slices/orderSlice';
 import { setCreateProductModal } from '../../store/slices/productSlice';
@@ -32,7 +32,7 @@ export const OpenProduct = () => {
         </HTag>
         <button className="open-product__btn d-flex align-items-center" onClick={openCreateProduct}>
           <span className="d-flex justify-content-center align-items-center">+</span>
-          {t('add.product')}
+          {t('add-product.title')}
         </button>
       </div>
       <ul className="p-0">{items && items.map((e) => <Product key={e._id} item={e} />)}</ul>
@@ -41,11 +41,7 @@ export const OpenProduct = () => {
           <Loader />
         </div>
       )}
-      {!isLoading && !items?.length && (
-        <div className="wrapper-info d-grid justify-content-center align-items-center">
-          <HTag tag="h4">{t('table.empty')}</HTag>
-        </div>
-      )}
+      {!isLoading && !items?.length && <EmptyTable />}
     </div>
   );
 };

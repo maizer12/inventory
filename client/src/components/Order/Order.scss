@@ -11,6 +11,7 @@
   padding: 18px 44px;
   align-items: center;
   grid-template-columns: 4fr 1fr 1fr 1fr 1fr;
+  column-gap: 20px;
 
   &__date {
     margin-left: 25px;
@@ -50,5 +51,9 @@
 
   p {
     text-wrap: nowrap;
+  }
+
+  &__arrow {
+    display: none;
   }
 }

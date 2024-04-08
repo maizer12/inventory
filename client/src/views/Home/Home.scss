@@ -12,12 +12,25 @@
   .order-item {
     display: flex !important;
     justify-content: left;
+    position: relative;
 
     &__title,
     &__balance,
     &__remove {
       display: none;
     }
+  }
+
+  .order-item__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    background-color: var(--gray);
+    color: #fff;
+    height: 100%;
+    width: 50px;
   }
 }
 

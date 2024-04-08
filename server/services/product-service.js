@@ -25,7 +25,7 @@ class ProductService {
       const items = await Product.find(query).sort({
         createdAt: -1,
       });
-      const count = await Product.countDocuments();
+      const count = await Product.countDocuments(query);
 
       return { items, count };
     } catch (error) {

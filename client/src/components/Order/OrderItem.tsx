@@ -1,4 +1,4 @@
-import { List, Trash2 } from 'lucide-react';
+import { ArrowRight, List, Trash2 } from 'lucide-react';
 import { HTag, PTag } from '../../common';
 import { FC } from 'react';
 import { IOrder } from '../../models/IOrder';
@@ -64,6 +64,9 @@ const OrderItem: FC<IProps> = ({ item }) => {
       <button className="order-item__remove remove-btn" onClick={clickDelete}>
         <Trash2 />
       </button>
+      <div className="order-item__arrow">
+        <ArrowRight />
+      </div>
     </li>
   );
 };

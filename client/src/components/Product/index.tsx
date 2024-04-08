@@ -45,13 +45,14 @@ export const Product: FC<ProductProps> = ({ className, moreInfo = false, item })
               по {dataFormatter(item.warrantyEndDate)}
             </PTag>
           </div>
+          <HTag tag="h3">{arrStates[item.state]}</HTag>
           <div>
             <PTag>{item.priceUSD}$</PTag>
             <PTag size="md" variant="dark">
               {item.priceUAH} UAH
             </PTag>
           </div>
-          <HTag tag="h3">{arrStates[item.state]}</HTag>
+
           <HTag line={true} tag="h3">
             Дополнительный заголовок, который я не добавил в базу данных из-за лени
           </HTag>

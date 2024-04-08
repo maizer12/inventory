@@ -110,7 +110,7 @@ export const CreateProductModal: FC = () => {
             </label>
           </div>
           {errors.priceUAH && <p className="error-message">{String(errors.priceUAH.message)}</p>}
-          {errors.priceUSD && <p className="error-message">{String(errors.priceUSD.message)}</p>}
+          {errors.priceUSD && !errors.priceUAH && <p className="error-message">{String(errors.priceUSD.message)}</p>}
           <div className="create-modal__selects d-flex">
             <div className="create-modal__select d-flex align-items-center">
               <HTag tag="h4">{t('add-product.status')}</HTag>
