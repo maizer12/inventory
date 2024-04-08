@@ -1,3 +1,15 @@
+export interface IProductForm {
+  name: string;
+  serialNumber: string;
+  warrantyStartDate: Date;
+  warrantyEndDate: Date;
+  priceUSD: number;
+  priceUAH: number;
+  status: number | string;
+  type: string | number;
+  state: number | string;
+}
+
 export interface IProduct {
   _id: string;
   name: string;

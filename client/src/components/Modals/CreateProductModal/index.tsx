@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { Button, HTag, Modal, Input, CalendarInput, Select } from '../../../common';
 import { useForm, Controller } from 'react-hook-form';
 import axios from '../../../api';
@@ -6,8 +6,7 @@ import { Save } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { createProduct, setCreateProductModal } from '../../../store/slices/productSlice';
 import { useTypeProduct, useStatusProduct, useStateProduct } from './_constants';
-import { useInput } from '../../../hooks/useInput';
-import { IProduct } from '../../../models/IProduct';
+import { IProduct, IProductForm } from '../../../models/IProduct';
 import { useTranslation } from 'react-i18next';
 
 export const CreateProductModal: FC = () => {
@@ -16,7 +15,7 @@ export const CreateProductModal: FC = () => {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm();
+  } = useForm<IProductForm>();
   const { t } = useTranslation();
   const statusItems = useStatusProduct();
   const typesItems = useTypeProduct();
@@ -29,7 +28,7 @@ export const CreateProductModal: FC = () => {
     dispatch(setCreateProductModal(bool));
   };
 
-  const clickCreate = async (dataForm: any) => {
+  const clickCreate = async (dataForm: IProductForm) => {
     try {
       if (!openOrder) return '';
       const { _id } = openOrder;
@@ -46,10 +45,20 @@ export const CreateProductModal: FC = () => {
 
   return (
     <Modal setClose={closeModal} title={t('add-product.title')}>
-      <form className="create-modal" onSubmit={handleSubmit((data) => clickCreate(data))}>
+      <form className="create-modal" onSubmit={handleSubmit((data: IProductForm) => clickCreate(data))}>
         <div className="modal-padding">
-          <Input placeholder={t('add-product.input-name')} className="mb-4" {...register('name')} />
-          <Input placeholder={t('add-product.input-s-num')} className="mb-4" {...register('serialNumber')} />
+          <Input
+            placeholder={t('add-product.input-name')}
+            className="mb-4"
+            {...register('name', { required: 'Name is required' })}
+          />
+          {errors.name && <p className="error-message">{String(errors.name.message)}</p>}
+          <Input
+            placeholder={t('add-product.input-s-num')}
+            className="mb-4"
+            {...register('serialNumber', { required: 'Serial number is required' })}
+          />
+          {errors.serialNumber && <p className="error-message">{String(errors.serialNumber.message)}</p>}
           <HTag tag="h4" className="mb-2">
             {t('add-product.guarantee')}
           </HTag>
@@ -76,14 +85,32 @@ export const CreateProductModal: FC = () => {
           </HTag>
           <div className="d-flex create-modal__date mb-4">
             <label className="label-money">
-              <Input min={0} {...register('priceUAH')} placeholder="0" type="number" />
+              <Input
+                min={0}
+                {...register('priceUAH', {
+                  required: 'Price is required',
+                  min: { value: 0, message: 'Price cannot be negative' },
+                })}
+                placeholder="0"
+                type="number"
+              />
               <HTag tag="h3">UAH</HTag>
             </label>
             <label className="label-money">
-              <Input min={0} {...register('priceUSD')} placeholder="0" type="number" />
+              <Input
+                min={0}
+                {...register('priceUSD', {
+                  required: 'Price is required',
+                  min: { value: 0, message: 'Price cannot be negative' },
+                })}
+                placeholder="0"
+                type="number"
+              />
               <HTag tag="h3">USD</HTag>
             </label>
           </div>
+          {errors.priceUAH && <p className="error-message">{String(errors.priceUAH.message)}</p>}
+          {errors.priceUSD && <p className="error-message">{String(errors.priceUSD.message)}</p>}
           <div className="create-modal__selects d-flex">
             <div className="create-modal__select d-flex align-items-center">
               <HTag tag="h4">{t('add-product.status')}</HTag>
