@@ -13,9 +13,11 @@ class ProductController {
       });
     }
   }
+
   async getAll(req, res) {
     try {
-      const products = await productService.getAll();
+      const params = req.query;
+      const products = await productService.getAll(params);
       res.json(products);
     } catch (err) {
       res.status(404).json({

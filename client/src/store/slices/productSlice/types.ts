@@ -6,3 +6,8 @@ export interface ProductSliceTypes {
   createProductModal: boolean;
   deleteProductItem: null | IProduct;
 }
+
+export interface ProductsParams {
+  productType?: string | number;
+  productStatus?: string | number;
+}

@@ -13,9 +13,16 @@ class ProductService {
     }
   }
 
-  async getAll() {
+  async getAll(params) {
     try {
-      const products = await Product.find();
+      const { productType, productStatus } = params;
+
+      const query = {};
+
+      if (productType) query.type = productType;
+      if (productStatus) query.status = productStatus;
+
+      const products = await Product.find(query);
       return products;
     } catch (error) {
       console.error('Error creating product:', error);

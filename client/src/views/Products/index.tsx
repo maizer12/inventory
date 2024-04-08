@@ -7,14 +7,14 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchProducts } from '../../store/slices/productSlice/asyncActions';
 
 const Products: FC = () => {
-  const [productType, setProductType] = useState<string | number>('');
-  const [productStatus, setProductStatus] = useState<string | number>('');
+  const [productType, setProductType] = useState<string | number>('All');
+  const [productStatus, setProductStatus] = useState<string | number>('All');
   const { items } = useAppSelector((state) => state.productSlice);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
+    dispatch(fetchProducts({ productStatus, productType }));
+  }, [productStatus, productType]);
 
   return (
     <main>

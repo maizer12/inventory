@@ -11,7 +11,7 @@ export const Select: FC<SelectProps> = ({ className = '', items, setSelect, text
     return (
       <label className={classNames}>
         <select onChange={(e) => setSelect(e.target.value)}>
-          {!!text?.length && <option>{text}</option>}
+          {!!text?.length && <option value="All">{text}</option>}
           {items.map((e) => (
             <option value={e.value} key={e.value}>
               {e.name}
