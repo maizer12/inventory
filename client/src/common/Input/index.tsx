@@ -1,7 +1,10 @@
-import { FC } from 'react';
-import { InputProps } from './Input.props';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import styles from './Input.module.scss';
 
-export const Input: FC<InputProps> = ({ className, ...props }) => {
-  return <input className={styles.input + ` ${className}`} {...props} />;
-};
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  className?: string;
+}
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(({ className, ...props }, ref) => {
+  return <input ref={ref} className={`${styles.input} ${className || ''}`} {...props} />;
+});
