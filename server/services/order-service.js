@@ -34,7 +34,6 @@ class OrderService {
 
   async removeToOrder(product) {
     try {
-      console.log(product);
       const order = await OrderModel.findById(product.order);
       if (!order) {
         throw new Error('Order not found');
@@ -69,19 +68,21 @@ class OrderService {
 
   async getAll() {
     try {
-      const orders = await OrderModel.aggregate([
-        {
-          $addFields: {
-            productCount: { $size: '$products' },
-          },
-        },
+      const result = await OrderModel.aggregate([
         {
           $sort: {
             createdAt: -1,
           },
         },
+        {
+          $facet: {
+            items: [{ $addFields: { productCount: { $size: '$products' } } }],
+            totalCount: [{ $count: 'count' }],
+          },
+        },
       ]);
-      return orders;
+      const { items, totalCount } = result[0];
+      return { items, ...totalCount[0] };
     } catch (err) {
       console.log(err);
       throw err;

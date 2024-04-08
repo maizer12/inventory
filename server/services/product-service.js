@@ -22,8 +22,10 @@ class ProductService {
       if (productType) query.type = productType;
       if (productStatus) query.status = productStatus;
 
-      const products = await Product.find(query);
-      return products;
+      const items = await Product.find(query);
+      const count = await Product.countDocuments();
+
+      return { items, count };
     } catch (error) {
       console.error('Error creating product:', error);
       throw error;

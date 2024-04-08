@@ -5,6 +5,7 @@ import { IProduct } from '../../../models/IProduct';
 
 const initialState: ProductSliceTypes = {
   items: [],
+  count: null,
   isLoading: false,
   createProductModal: false,
   deleteProductItem: null,
@@ -45,7 +46,8 @@ const productSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      state.items = action.payload;
+      state.items = action.payload.items;
+      state.count = action.payload.count;
       state.isLoading = false;
     });
     builder.addCase(fetchProducts.rejected, (state) => {

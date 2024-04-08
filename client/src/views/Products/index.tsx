@@ -9,7 +9,7 @@ import { fetchProducts } from '../../store/slices/productSlice/asyncActions';
 const Products: FC = () => {
   const [productType, setProductType] = useState<string | number>('All');
   const [productStatus, setProductStatus] = useState<string | number>('All');
-  const { items } = useAppSelector((state) => state.productSlice);
+  const { items, count } = useAppSelector((state) => state.productSlice);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Products: FC = () => {
   return (
     <main>
       <div className="products-header d-flex align-items-center">
-        <HTag tag="h1">Продукты / 25</HTag>
+        <HTag tag="h1">Продукты / {!!count && count}</HTag>
         <div className="products-header__item d-flex align-items-center">
           <PTag>Тип:</PTag>
           <Select items={typeProduct} setSelect={setProductType} text="Выбрать" />

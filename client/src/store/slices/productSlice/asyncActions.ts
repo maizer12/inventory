@@ -1,7 +1,7 @@
 import axios from '../../../api/index';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { IProduct } from '../../../models/IProduct';
-import { ProductsParams } from './types';
+import { IFetchProducts, ProductsParams } from './types';
 
 export const fetchOrderProducts = createAsyncThunk('cards/fetchOrderProducts', async (id: string) => {
   const res = await axios.get<IProduct[]>('/order/' + id);
@@ -21,7 +21,7 @@ export const fetchProducts = createAsyncThunk('cards/fetchProducts', async (para
     query.productStatus = productStatus;
   }
 
-  const res = await axios.get<IProduct[]>('/products', {
+  const res = await axios.get<IFetchProducts>('/products', {
     params: query,
   });
   return res.data;

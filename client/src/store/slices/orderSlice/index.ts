@@ -6,6 +6,7 @@ import { IOrder } from '../../../models/IOrder';
 const initialState: CardsTypes = {
   items: [],
   status: '',
+  count: null,
   openOrder: null,
   createOrderModal: false,
   deleteOrderItem: null,
@@ -38,7 +39,8 @@ const cardsSlice = createSlice({
     });
     builder.addCase(fetchOrders.fulfilled, (state, action) => {
       state.status = '';
-      state.items = action.payload;
+      state.items = action.payload.items;
+      state.count = action.payload.count;
     });
     builder.addCase(fetchOrders.rejected, (state) => {
       state.status = 'err';

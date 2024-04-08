@@ -10,7 +10,7 @@ import { DeleteProductModal } from '../../components/Modals/DeleteModal/DeletePr
 
 const Home: FC = () => {
   const dispatch = useAppDispatch();
-  const { openOrder, createOrderModal, deleteOrderItem } = useAppSelector((state) => state.orderSlice);
+  const { openOrder, createOrderModal, deleteOrderItem, count } = useAppSelector((state) => state.orderSlice);
   const { createProductModal, deleteProductItem } = useAppSelector((state) => state.productSlice);
   const className = cn({ ['show-product']: !!openOrder });
 
@@ -29,7 +29,7 @@ const Home: FC = () => {
           <button className="add-btn" onClick={openCreateModal}>
             +
           </button>
-          <HTag tag="h1">Приходы / 25</HTag>
+          <HTag tag="h1">Приходы / {!!count && count}</HTag>
         </div>
         <div className="order-content">
           <OrderTable />
