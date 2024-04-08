@@ -55,7 +55,9 @@ export const CreateOrderModal: FC = () => {
           />
         </div>
         <div className="delete-order__footer d-flex justify-content-end modal-footer">
-          <button className="delete-modal__close">{t('close.btn')}</button>
+          <button className="delete-modal__close" onClick={() => setModal(false)}>
+            {t('close.btn')}
+          </button>
           <Button className="create-order__save" isLoading={loading} type="submit">
             <Save />
             {t('create.btn')}

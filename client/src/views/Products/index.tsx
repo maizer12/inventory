@@ -16,7 +16,7 @@ const Products: FC = () => {
 
   useEffect(() => {
     dispatch(fetchProducts({ productStatus, productType }));
-  }, [productStatus, productType]);
+  }, [productStatus, productType, dispatch]);
 
   return (
     <main>
