@@ -6,12 +6,13 @@ import cn from 'classnames';
 import './Product.scss';
 import { useAppDispatch } from '../../hooks/redux';
 import { setDeleteProductItem } from '../../store/slices/productSlice';
-import { arrStates, arrStatus } from './_constant';
+import { useArrStates, useArrStatus } from './_constant';
 import { dataFormatter } from '../../helpers/dateFormatter';
 
 export const Product: FC<ProductProps> = ({ className, moreInfo = false, item }) => {
   const dispatch = useAppDispatch();
   const classNames = cn(className, 'product-item', 'd-flex', { 'more-info': moreInfo });
+  const arrStates = useArrStates();
 
   const clickRemove = () => {
     dispatch(setDeleteProductItem(item));
@@ -30,7 +31,7 @@ export const Product: FC<ProductProps> = ({ className, moreInfo = false, item })
         </div>
       </div>
       <PTag size="lg" variant="primary" className="product-item__status">
-        {arrStatus[item.status]}
+        {useArrStatus()[item.status]}
       </PTag>
       {moreInfo && (
         <>

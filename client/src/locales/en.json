@@ -5,7 +5,21 @@
   "sidebar.home": "Home",
   "sidebar.products": "Products",
   "table.empty": "Table is empty!",
-  "add.product": "Create product",
+  "add-product.title": "Create Product",
+  "add-order.title": "Create Order",
+  "remove-modal.title": "Are you sure you want to delete this item?",
+  "add-product.input-name": "Product Name",
+  "add-order.input-name": "Order Name",
+  "add-product.input-s-num": "Serial Number",
+  "add-product.guarantee": "Guarantee Term:",
+  "add-product.price": "Price:",
+  "add-product.state": "State:",
+  "add-product.status": "Status:",
+  "add-product.type": "Type:",
+  "create.btn": "Create",
+  "close.btn": "Cancel",
+  "remove.btn": "Delete",
+  "default.selector": "Select",
   "status": {
     "free": "Available",
     "inRepair": "In Repair"
@@ -19,5 +33,7 @@
     "laptop": "Laptop",
     "tablet": "Tablet",
     "tv": "TV"
-  }
+  },
+  "daysOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+  "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 }

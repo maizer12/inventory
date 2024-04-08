@@ -2,6 +2,7 @@ import { FC, ReactNode } from 'react';
 import { Button } from '../';
 import { Modal } from '.';
 import { Trash2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface IProps {
   children: ReactNode;
@@ -10,13 +11,15 @@ interface IProps {
 }
 
 export const DeleteModal: FC<IProps> = ({ children, setClose, clickDelete }) => {
+  const { t } = useTranslation();
+
   return (
-    <Modal title="Вы уверены, что хотите удалить этот объект?" className="delete-modal" setClose={setClose}>
+    <Modal title={t('remove-modal.title')} className="delete-modal" setClose={setClose}>
       {children}
       <div className="d-flex justify-content-end modal-footer">
-        <button className="delete-modal__close">Отменить</button>
+        <button className="delete-modal__close">{t('close.btn')}</button>
         <Button className="delete-modal__remove" onClick={clickDelete}>
-          <Trash2 /> Удалить
+          <Trash2 /> {t('remove.btn')}
         </Button>
       </div>
     </Modal>

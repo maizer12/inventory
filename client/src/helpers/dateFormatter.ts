@@ -1,6 +1,9 @@
+import { getT } from '../i18n';
+
 export const normalizeDate = (value: Date) => {
-  const daysOfWeek = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
-  const months = ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
+  const t = getT();
+  const daysOfWeek: string[] = t('daysOfWeek', { returnObjects: true });
+  const months: string[] = t('months', { returnObjects: true });
 
   const date = new Date(value);
 

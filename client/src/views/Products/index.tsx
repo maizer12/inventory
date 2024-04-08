@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from 'react';
 import './Products.scss';
 import { HTag, PTag, Select } from '../../common';
 import { Product } from '../../components';
-import { typeProduct, statusProduct } from '../../components/Modals/CreateProductModal/_constants';
+import { useTypeProduct, useStatusProduct } from '../../components/Modals/CreateProductModal/_constants';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchProducts } from '../../store/slices/productSlice/asyncActions';
 import { useTranslation } from 'react-i18next';
@@ -24,11 +24,11 @@ const Products: FC = () => {
         <HTag tag="h1">{`${t('products.title')} / ${!!count && count}`}</HTag>
         <div className="products-header__item d-flex align-items-center">
           <PTag>Тип:</PTag>
-          <Select items={typeProduct} setSelect={setProductType} text="Выбрать" />
+          <Select items={useTypeProduct()} setSelect={setProductType} text={t('default.selector')} />
         </div>
         <div className="products-header__item d-flex align-items-center">
           <PTag>Статус:</PTag>
-          <Select items={statusProduct} setSelect={setProductStatus} text="Выбрать" />
+          <Select items={useStatusProduct()} setSelect={setProductStatus} text={t('default.selector')} />
         </div>
       </div>
       <ul className="product-table scroll-style">

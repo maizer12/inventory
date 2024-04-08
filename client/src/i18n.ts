@@ -24,4 +24,5 @@ i18n.use(initReactI18next).init({
   },
 });
 
+export const getT = () => i18n.getFixedT(i18n.language);
 export default i18n;

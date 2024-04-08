@@ -6,7 +6,10 @@
   "sidebar.products": "Продукти",
   "table.empty": "Таблиця порожня!",
   "add-product.title": "Створити продукт",
+  "add-order.title": "Створити замовлення",
+  "remove-modal.title": "Ви впевнені, що хочете видалити цей об'єкт?",
   "add-product.input-name": "Назва товара",
+  "add-order.input-name": "Назва замовлення",
   "add-product.input-s-num": "Серійний номер",
   "add-product.guarantee": "Термін гарантії:",
   "add-product.price": "Ціна:",
@@ -15,6 +18,8 @@
   "add-product.type": "Тип:",
   "create.btn": "Створити",
   "close.btn": "Скасувати",
+  "remove.btn": "Видалити",
+  "default.selector": "Вибрати",
   "status": {
     "free": "Свободний",
     "inRepair": "В ремонті"
@@ -28,5 +33,7 @@
     "laptop": "Ноутбук",
     "tablet": "Планшет",
     "tv": "Телевізор"
-  }
+  },
+  "daysOfWeek": ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця", "Субота"],
+  "months": ["Січ", "Лют", "Бер", "Кві", "Тра", "Чер", "Лип", "Сер", "Вер", "Жов", "Лис", "Гру"]
 }
