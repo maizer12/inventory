@@ -26,6 +26,8 @@ main {
   flex: 1;
 }
 .scroll-style {
+  overflow: auto;
+
   &::-webkit-scrollbar {
     height: 12px;
     background-color: var(--white);

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Button, HTag, Modal, Input, CalendarInput, Select } from '../../../common';
 import { useForm, Controller } from 'react-hook-form';
 import axios from '../../../api';
@@ -8,6 +8,7 @@ import { createProduct, setCreateProductModal } from '../../../store/slices/prod
 import { useTypeProduct, useStatusProduct, useStateProduct } from './_constants';
 import { IProduct, IProductForm } from '../../../models/IProduct';
 import { useTranslation } from 'react-i18next';
+import { LoadPhoto } from './LoadPhoto';
 
 export const CreateProductModal: FC = () => {
   const {
@@ -17,6 +18,7 @@ export const CreateProductModal: FC = () => {
     formState: { errors },
   } = useForm<IProductForm>();
   const { t } = useTranslation();
+  const [imgLink, setImgLink] = useState('');
   const statusItems = useStatusProduct();
   const typesItems = useTypeProduct();
   const statesItems = useStateProduct();
@@ -34,7 +36,7 @@ export const CreateProductModal: FC = () => {
       const { _id } = openOrder;
       const body = {
         ...dataForm,
-        imageUrl: 'https://content.rozetka.com.ua/goods/images/big/393386613.jpg',
+        imageUrl: imgLink,
       };
       const { data } = await axios.post<IProduct>(`/product/order/${_id}`, body);
       dispatch(createProduct(data));
@@ -111,7 +113,7 @@ export const CreateProductModal: FC = () => {
           </div>
           {errors.priceUAH && <p className="error-message">{String(errors.priceUAH.message)}</p>}
           {errors.priceUSD && !errors.priceUAH && <p className="error-message">{String(errors.priceUSD.message)}</p>}
-          <div className="create-modal__selects d-flex">
+          <div className="create-modal__selects d-flex mb-4">
             <div className="create-modal__select d-flex align-items-center">
               <HTag tag="h4">{t('add-product.status')}</HTag>
               <Controller
@@ -140,6 +142,7 @@ export const CreateProductModal: FC = () => {
               />
             </div>
           </div>
+          <LoadPhoto setImgLink={setImgLink} imgLink={imgLink} />
         </div>
         <div className="delete-order__footer d-flex justify-content-end modal-footer">
           <button className="delete-modal__close">{t('close.btn')}</button>

@@ -18,11 +18,31 @@ mongoose
 
 const app = express();
 
+const storage = multer.diskStorage({
+  destination: (_, __, cd) => {
+    cd(null, 'uploads');
+  },
+  filename: (_, file, cd) => {
+    const arr = file.originalname.split('.');
+    cd(null, Date.now() + '-img.' + arr[arr.length - 1]);
+  },
+});
+
+const upload = multer({ storage });
+
 app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
   res.json({ message: 'is work' });
+});
+
+app.use('/api/uploads', express.static('uploads'));
+
+app.post('/api/upload', checkAuth, upload.single('image'), (req, res) => {
+  res.json({
+    url: `/uploads/${req.file.filename}`,
+  });
 });
 
 app.use('/api', orderRoutes);

@@ -5,6 +5,7 @@ import { setDeleteProductItem, deleteOrder } from '../../../store/slices/product
 import axios from '../../../api';
 import { IProduct } from '../../../models/IProduct';
 import { Product } from '../../Product';
+import { fetchOrders } from '../../../store/slices/orderSlice/asyncActions';
 
 interface IProps {
   item: IProduct;
@@ -22,6 +23,7 @@ export const DeleteProductModal: FC<IProps> = ({ item }) => {
       const id = item._id;
       await axios.delete(`/product/${id}`);
       dispatch(deleteOrder(id));
+      dispatch(fetchOrders());
     } catch (err) {
       console.log(err);
     }

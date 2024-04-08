@@ -45,7 +45,9 @@ export const OpenProduct = () => {
             {t('add-product.title')}
           </button>
         </div>
-        <ul className="p-0">{items && items.map((e) => <Product key={e._id} item={e} />)}</ul>
+        <ul className="p-0 scroll-style open-product__items">
+          {items && items.map((e) => <Product key={e._id} item={e} />)}
+        </ul>
         {isLoading && (
           <div className="wrapper-info d-grid justify-content-center align-items-center">
             <Loader />

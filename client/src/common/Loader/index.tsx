@@ -12,11 +12,11 @@ interface Props {
 export const Loader: FC<Props> = ({ height = 40, width = 40, full, className }) => {
   if (full) {
     return (
-      <div className={styles['loader-full']}>
+      <div className={styles['loader-full'] + ' anim-opacity'}>
         <Loader2 className={styles.loader + ` ${className}`} height={height} width={width} />
       </div>
     );
   }
 
-  return <Loader2 className={styles.loader + ` ${className}`} height={height} width={width} />;
+  return <Loader2 className={styles.loader + ` ${className} anim-opacity`} height={height} width={width} />;
 };

@@ -19,7 +19,7 @@ const Products: FC = () => {
   }, [productStatus, productType, dispatch]);
 
   return (
-    <main>
+    <main className="anim-opacity">
       <div className="products-header d-flex align-items-center">
         <HTag tag="h1">
           {t('products.title')} / {!!count && isLoading ? <Loader /> : count}

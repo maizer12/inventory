@@ -8,10 +8,11 @@ import { useAppDispatch } from '../../hooks/redux';
 import { setDeleteProductItem } from '../../store/slices/productSlice';
 import { useArrStates, useArrStatus } from './_constant';
 import { dataFormatter } from '../../helpers/dateFormatter';
+import { baseURL } from '../../api';
 
 export const Product: FC<ProductProps> = ({ className, moreInfo = false, item }) => {
   const dispatch = useAppDispatch();
-  const classNames = cn(className, 'product-item', 'd-flex', { 'more-info': moreInfo });
+  const classNames = cn(className, 'product-item', 'd-flex', { 'more-info': moreInfo }, 'anim-opacity');
   const arrStates = useArrStates();
 
   const clickRemove = () => {
@@ -22,7 +23,7 @@ export const Product: FC<ProductProps> = ({ className, moreInfo = false, item })
     <li className={classNames}>
       <div className="product-item__info d-flex align-items-center">
         <DotStatus variant={item.status ? 'disable' : 'active'} />
-        <img className="product-item__img" src={item.imageUrl} alt="product" />
+        <img className="product-item__img" src={baseURL + item.imageUrl} alt="product" />
         <div className="product-item__desc">
           <HTag tag="h3" line={true}>
             {item.name}

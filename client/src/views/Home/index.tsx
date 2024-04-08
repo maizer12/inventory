@@ -5,8 +5,7 @@ import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchOrders } from '../../store/slices/orderSlice/asyncActions';
 import './Home.scss';
-import { setCreateOrderModal } from '../../store/slices/orderSlice';
-import { DeleteProductModal } from '../../components/Modals/DeleteModal/DeleteProductModal';
+import { setCreateOrderModal, setOpenProduct } from '../../store/slices/orderSlice';
 import { useTranslation } from 'react-i18next';
 
 const Home: FC = () => {
@@ -15,11 +14,17 @@ const Home: FC = () => {
   const { openOrder, createOrderModal, deleteOrderItem, count, isLoading } = useAppSelector(
     (state) => state.orderSlice,
   );
-  const { createProductModal, deleteProductItem } = useAppSelector((state) => state.productSlice);
-  const className = cn({ ['show-product']: !!openOrder });
+  const { createProductModal } = useAppSelector((state) => state.productSlice);
+  const className = cn({ ['show-product']: !!openOrder }, 'anim-opacity');
 
   useEffect(() => {
     dispatch(fetchOrders());
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      dispatch(setOpenProduct(null));
+    };
   }, []);
 
   const openCreateModal = () => {
@@ -42,7 +47,6 @@ const Home: FC = () => {
           {!!openOrder && <OpenProduct />}
         </div>
       </section>
-      {!!deleteProductItem && <DeleteProductModal item={deleteProductItem} />}
       {!!deleteOrderItem && <DeleteOrderModal item={deleteOrderItem} />}
       {createOrderModal && <CreateOrderModal />}
       {createProductModal && <CreateProductModal />}

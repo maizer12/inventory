@@ -1,19 +1,12 @@
-.fade-enter {
-  opacity: 0;
-  z-index: 1;
-  transition: opacity 2000ms;
+@keyframes animOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.fade-enter-active {
-  opacity: 1;
-  transition: opacity 2000ms;
-}
-
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-exit-active {
-  opacity: 0;
-  transition: opacity 200ms;
+.anim-opacity {
+  animation: animOpacity 0.7s 1;
 }

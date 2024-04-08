@@ -6,7 +6,7 @@ export const EmptyTable: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="wrapper-info d-grid justify-content-center align-items-center">
+    <div className="wrapper-info d-grid justify-content-center align-items-center anim-opacity">
       <HTag tag="h4">{t('table.empty')}</HTag>
     </div>
   );
