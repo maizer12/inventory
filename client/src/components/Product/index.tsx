@@ -21,16 +21,18 @@ export const Product: FC<ProductProps> = ({ className, moreInfo = false, item })
   return (
     <li className={classNames}>
       <div className="product-item__info d-flex align-items-center">
-        <DotStatus />
+        <DotStatus variant={item.status ? 'disable' : 'active'} />
         <img className="product-item__img" src={item.imageUrl} alt="product" />
         <div className="product-item__desc">
           <HTag tag="h3" line={true}>
             {item.name}
           </HTag>
-          <PTag size="lg">{item.serialNumber}</PTag>
+          <PTag size="lg" className="product-item__ser-num">
+            {item.serialNumber}
+          </PTag>
         </div>
       </div>
-      <PTag size="lg" variant="primary" className="product-item__status">
+      <PTag size="lg" variant={item.status ? 'dark' : 'primary'} className="product-item__status">
         {useArrStatus()[item.status]}
       </PTag>
       {moreInfo && (

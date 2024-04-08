@@ -22,7 +22,9 @@ class ProductService {
       if (productType) query.type = productType;
       if (productStatus) query.status = productStatus;
 
-      const items = await Product.find(query);
+      const items = await Product.find(query).sort({
+        createdAt: -1,
+      });
       const count = await Product.countDocuments();
 
       return { items, count };

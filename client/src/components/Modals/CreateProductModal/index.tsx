@@ -19,8 +19,8 @@ export const CreateProductModal: FC = () => {
   const [type, setType] = useState<string | number>('phone');
   const nameInput = useInput('');
   const serialNumber = useInput('');
-  const UAH = useInput(0);
-  const USD = useInput(0);
+  const UAH = useInput('');
+  const USD = useInput('');
 
   const dispatch = useAppDispatch();
 
@@ -51,6 +51,8 @@ export const CreateProductModal: FC = () => {
     }
   };
 
+  console.log(status);
+
   return (
     <Modal setClose={closeModal} title={t('add-product.title')}>
       <div className="create-modal">
@@ -69,26 +71,26 @@ export const CreateProductModal: FC = () => {
           </HTag>
           <div className="d-flex create-modal__date mb-4">
             <label className="label-money">
-              <Input placeholder="UAH" min={0} type="number" {...UAH} />
+              <Input placeholder="0" min={0} type="number" {...UAH} />
               <HTag tag="h3">UAH</HTag>
             </label>
             <label className="label-money">
-              <Input placeholder="USD" min={0} type="number" {...USD} />
+              <Input placeholder="0" min={0} type="number" {...USD} />
               <HTag tag="h3">USD</HTag>
             </label>
           </div>
           <div className="create-modal__selects d-flex">
             <div className="create-modal__select d-flex align-items-center">
               <HTag tag="h4">{t('add-product.status')}</HTag>
-              <Select items={useStatusProduct()} setSelect={setType} />
+              <Select items={useStatusProduct()} setSelect={setStatus} />
             </div>
             <div className="create-modal__select d-flex align-items-center">
               <HTag tag="h4">{t('add-product.type')}</HTag>
-              <Select items={useTypeProduct()} setSelect={setState} />
+              <Select items={useTypeProduct()} setSelect={setType} />
             </div>
             <div className="create-modal__select d-flex align-items-center">
               <HTag tag="h4">{t('add-product.state')}</HTag>
-              <Select items={useStateProduct()} setSelect={setStatus} />
+              <Select items={useStateProduct()} setSelect={setState} />
             </div>
           </div>
         </div>

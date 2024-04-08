@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 import { OpenProduct, OrderTable, DeleteOrderModal, CreateOrderModal, CreateProductModal } from '../../components';
-import { HTag } from '../../common';
+import { HTag, Loader } from '../../common';
 import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchOrders } from '../../store/slices/orderSlice/asyncActions';
@@ -12,7 +12,9 @@ import { useTranslation } from 'react-i18next';
 const Home: FC = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const { openOrder, createOrderModal, deleteOrderItem, count } = useAppSelector((state) => state.orderSlice);
+  const { openOrder, createOrderModal, deleteOrderItem, count, isLoading } = useAppSelector(
+    (state) => state.orderSlice,
+  );
   const { createProductModal, deleteProductItem } = useAppSelector((state) => state.productSlice);
   const className = cn({ ['show-product']: !!openOrder });
 
@@ -32,7 +34,7 @@ const Home: FC = () => {
             +
           </button>
           <HTag tag="h1">
-            {t('home.title')} / {!!count && count}
+            {t('home.title')} / {!!count && isLoading ? <Loader /> : count}
           </HTag>
         </div>
         <div className="order-content">

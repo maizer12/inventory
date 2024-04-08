@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 
 export const CreateOrderModal: FC = () => {
   const { t } = useTranslation();
+  const [loading, setLoading] = useState(false);
   const [date, setDate] = useState(new Date());
   const [title, setTitle] = useState('');
   const dispatch = useAppDispatch();
@@ -18,6 +19,7 @@ export const CreateOrderModal: FC = () => {
 
   const clickCreate = async () => {
     try {
+      setLoading(true);
       const { data } = await axios.post<IOrder>('/orders', {
         title,
         date,
@@ -25,6 +27,8 @@ export const CreateOrderModal: FC = () => {
       dispatch(createOrder(data));
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -42,7 +46,7 @@ export const CreateOrderModal: FC = () => {
         </div>
         <div className="delete-order__footer d-flex justify-content-end modal-footer">
           <button className="delete-modal__close">{t('close.btn')}</button>
-          <Button className="create-order__save" onClick={clickCreate}>
+          <Button className="create-order__save" onClick={clickCreate} isLoading={loading}>
             <Save />
             {t('create.btn')}
           </Button>

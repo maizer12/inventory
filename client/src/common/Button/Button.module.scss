@@ -15,6 +15,11 @@
     width: 17px;
   }
 
+  .loader {
+    width: 31px;
+    height: 100%;
+  }
+
   &:hover {
     transform: scale(1.1);
   }

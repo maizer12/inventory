@@ -11,3 +11,9 @@
   animation: spin 1s linear infinite;
   color: var(--primary);
 }
+.loader-full {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 240px;
+}

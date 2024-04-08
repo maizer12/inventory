@@ -26,6 +26,10 @@
   p {
     text-wrap: nowrap;
   }
+
+  &__ser-num {
+    text-transform: uppercase;
+  }
 }
 .more-info {
   column-gap: 60px;
