@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { HTag, Loader } from '../../common';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { setOpenProduct } from '../../store/slices/orderSlice';
@@ -7,6 +8,7 @@ import './OpenProduct.scss';
 import { X } from 'lucide-react';
 
 export const OpenProduct = () => {
+  const { t } = useTranslation();
   const { openOrder } = useAppSelector((state) => state.orderSlice);
   const { isLoading, items } = useAppSelector((state) => state.productSlice);
   const dispatch = useAppDispatch();
@@ -30,7 +32,7 @@ export const OpenProduct = () => {
         </HTag>
         <button className="open-product__btn d-flex align-items-center" onClick={openCreateProduct}>
           <span className="d-flex justify-content-center align-items-center">+</span>
-          Добавить продукт
+          {t('add.product')}
         </button>
       </div>
       <ul className="p-0">{items && items.map((e) => <Product key={e._id} item={e} />)}</ul>
@@ -41,7 +43,7 @@ export const OpenProduct = () => {
       )}
       {!isLoading && !items?.length && (
         <div className="wrapper-info d-grid justify-content-center align-items-center">
-          <HTag tag="h4">Table is empty!</HTag>
+          <HTag tag="h4">{t('table.empty')}</HTag>
         </div>
       )}
     </div>

@@ -1,49 +1,84 @@
 .sidebar {
-	box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.2);
-	max-width: 220px;
-	width: 100%;
-	padding-top: 60px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: #fff;
+  box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.2);
+  max-width: 220px;
+  width: 100%;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
 }
 
 .sidebar-user {
-	position: relative;
-	width: fit-content;
-	margin-bottom: 65px;
+  position: relative;
+  width: fit-content;
+  margin-bottom: 25px;
 
-	img {
-		max-width: 100px;
-		max-height: 100px;
-		border-radius: 50%;
-	}
+  img {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+  }
 
-	&__setting {
-		position: absolute;
-		right: -5px;
-		bottom: 0;
+  &__setting {
+    position: absolute;
+    right: -5px;
+    bottom: 0;
 
-		svg {
-			width: 17px;
-			height: 17px;
-		}
-	}
+    svg {
+      width: 17px;
+      height: 17px;
+    }
+  }
 }
 
 .menu-link {
-	font-size: 21px;
-	display: block;
-	margin: 0 auto;
-	color: var(--black);
-	margin-bottom: 40px;
-	width: fit-content;
-	font-weight: 700;
-	text-transform: uppercase;
-	padding-bottom: 6px;
+  font-size: 21px;
+  display: block;
+  margin: 0 auto;
+  color: var(--black);
+  margin-bottom: 40px;
+  width: fit-content;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-bottom: 6px;
 
-	&.active {
-		border-bottom: 3px solid var(--primary);
-	}
+  &.active {
+    border-bottom: 3px solid var(--primary);
+  }
+}
+.sidebar-language {
+  margin-bottom: 45px;
+  align-items: center;
+
+  button {
+    font-size: 21px;
+    text-transform: uppercase;
+    position: relative;
+    transition: 0.6s;
+    display: flex;
+    align-items: center;
+
+    &::after {
+      content: '|';
+      color: var(--black);
+      display: block;
+    }
+
+    &:last-child {
+      margin-right: 0;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+
+  .active {
+    color: var(--primary);
+  }
 }

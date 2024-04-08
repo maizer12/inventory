@@ -7,8 +7,10 @@ import { fetchOrders } from '../../store/slices/orderSlice/asyncActions';
 import './Home.scss';
 import { setCreateOrderModal } from '../../store/slices/orderSlice';
 import { DeleteProductModal } from '../../components/Modals/DeleteModal/DeleteProductModal';
+import { useTranslation } from 'react-i18next';
 
 const Home: FC = () => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { openOrder, createOrderModal, deleteOrderItem, count } = useAppSelector((state) => state.orderSlice);
   const { createProductModal, deleteProductItem } = useAppSelector((state) => state.productSlice);
@@ -29,7 +31,9 @@ const Home: FC = () => {
           <button className="add-btn" onClick={openCreateModal}>
             +
           </button>
-          <HTag tag="h1">Приходы / {!!count && count}</HTag>
+          <HTag tag="h1">
+            {t('home.title')} / {!!count && count}
+          </HTag>
         </div>
         <div className="order-content">
           <OrderTable />

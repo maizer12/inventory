@@ -1,0 +1,23 @@
+{
+  "home.title": "Orders",
+  "products.title": "Products",
+  "order-item.items": "Products",
+  "sidebar.home": "Home",
+  "sidebar.products": "Products",
+  "table.empty": "Table is empty!",
+  "add.product": "Create product",
+  "status": {
+    "free": "Available",
+    "inRepair": "In Repair"
+  },
+  "state": {
+    "new": "New",
+    "used": "Used"
+  },
+  "type": {
+    "phone": "Phone",
+    "laptop": "Laptop",
+    "tablet": "Tablet",
+    "tv": "TV"
+  }
+}

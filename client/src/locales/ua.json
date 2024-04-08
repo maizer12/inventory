@@ -1,0 +1,32 @@
+{
+  "home.title": "Замовлення",
+  "products.title": "Продукти",
+  "order-item.items": "Продукти",
+  "sidebar.home": "Головна",
+  "sidebar.products": "Продукти",
+  "table.empty": "Таблиця порожня!",
+  "add-product.title": "Створити продукт",
+  "add-product.input-name": "Назва товара",
+  "add-product.input-s-num": "Серійний номер",
+  "add-product.guarantee": "Термін гарантії:",
+  "add-product.price": "Ціна:",
+  "add-product.state": "Стан:",
+  "add-product.status": "Статус:",
+  "add-product.type": "Тип:",
+  "create.btn": "Створити",
+  "close.btn": "Скасувати",
+  "status": {
+    "free": "Свободний",
+    "inRepair": "В ремонті"
+  },
+  "state": {
+    "new": "Новий",
+    "used": "Б/У"
+  },
+  "type": {
+    "phone": "Телефон",
+    "laptop": "Ноутбук",
+    "tablet": "Планшет",
+    "tv": "Телевізор"
+  }
+}

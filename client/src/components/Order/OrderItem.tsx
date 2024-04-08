@@ -6,12 +6,14 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { setDeleteOrderItem, setOpenProduct } from '../../store/slices/orderSlice';
 import { fetchOrderProducts } from '../../store/slices/productSlice/asyncActions';
 import { normalizeDate } from '../../helpers/dateFormatter';
+import { useTranslation } from 'react-i18next';
 
 interface IProps {
   item: IOrder;
 }
 
 const OrderItem: FC<IProps> = ({ item }) => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const active = useAppSelector((state) => state.orderSlice.openOrder);
   const checkActive = !!active && active._id === item._id ? 'active-btn' : '';
@@ -40,7 +42,7 @@ const OrderItem: FC<IProps> = ({ item }) => {
           <HTag tag="h3" variant="gray">
             {item.productCount}
           </HTag>
-          <PTag>Продукта</PTag>
+          <PTag>{t('order-item.items')}</PTag>
         </div>
       </div>
       <div className="order-item__date">

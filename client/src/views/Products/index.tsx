@@ -5,8 +5,10 @@ import { Product } from '../../components';
 import { typeProduct, statusProduct } from '../../components/Modals/CreateProductModal/_constants';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchProducts } from '../../store/slices/productSlice/asyncActions';
+import { useTranslation } from 'react-i18next';
 
 const Products: FC = () => {
+  const { t } = useTranslation();
   const [productType, setProductType] = useState<string | number>('All');
   const [productStatus, setProductStatus] = useState<string | number>('All');
   const { items, count } = useAppSelector((state) => state.productSlice);
@@ -19,7 +21,7 @@ const Products: FC = () => {
   return (
     <main>
       <div className="products-header d-flex align-items-center">
-        <HTag tag="h1">Продукты / {!!count && count}</HTag>
+        <HTag tag="h1">{`${t('products.title')} / ${!!count && count}`}</HTag>
         <div className="products-header__item d-flex align-items-center">
           <PTag>Тип:</PTag>
           <Select items={typeProduct} setSelect={setProductType} text="Выбрать" />

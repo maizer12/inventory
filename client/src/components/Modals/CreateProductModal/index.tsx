@@ -4,11 +4,13 @@ import axios from '../../../api';
 import { Save } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { createProduct, setCreateProductModal } from '../../../store/slices/productSlice';
-import { stateProduct, statusProduct, typeProduct } from './_constants';
+import { useTypeProduct, useStatusProduct, useStateProduct } from './_constants';
 import { useInput } from '../../../hooks/useInput';
 import { IProduct } from '../../../models/IProduct';
+import { useTranslation } from 'react-i18next';
 
 export const CreateProductModal: FC = () => {
+  const { t } = useTranslation();
   const { openOrder } = useAppSelector((state) => state.orderSlice);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -50,20 +52,20 @@ export const CreateProductModal: FC = () => {
   };
 
   return (
-    <Modal setClose={closeModal} title="Створити продукт">
+    <Modal setClose={closeModal} title={t('add-product.title')}>
       <div className="create-modal">
         <div className="modal-padding">
-          <Input placeholder="Назва товара" className="mb-4" {...nameInput} />
-          <Input placeholder="Серийный номер" className="mb-4" {...serialNumber} />
+          <Input placeholder={t('add-product.input-name')} className="mb-4" {...nameInput} />
+          <Input placeholder={t('add-product.input-s-num')} className="mb-4" {...serialNumber} />
           <HTag tag="h4" className="mb-2">
-            Срок гарантии:
+            {t('add-product.guarantee')}
           </HTag>
           <div className="d-flex create-modal__date mb-4">
             <CalendarInput className="calendar" setDate={setStartDate} date={startDate} />
             <CalendarInput className="calendar" setDate={setEndDate} date={endDate} />
           </div>
           <HTag tag="h4" className="mb-2">
-            Цена:
+            {t('add-product.price')}
           </HTag>
           <div className="d-flex create-modal__date mb-4">
             <label className="label-money">
@@ -77,24 +79,24 @@ export const CreateProductModal: FC = () => {
           </div>
           <div className="create-modal__selects d-flex">
             <div className="create-modal__select d-flex align-items-center">
-              <HTag tag="h4">Types:</HTag>
-              <Select items={typeProduct} setSelect={setType} />
+              <HTag tag="h4">{t('add-product.status')}</HTag>
+              <Select items={useStatusProduct()} setSelect={setType} />
             </div>
             <div className="create-modal__select d-flex align-items-center">
-              <HTag tag="h4">State:</HTag>
-              <Select items={stateProduct} setSelect={setState} />
+              <HTag tag="h4">{t('add-product.type')}</HTag>
+              <Select items={useTypeProduct()} setSelect={setState} />
             </div>
             <div className="create-modal__select d-flex align-items-center">
-              <HTag tag="h4">Status:</HTag>
-              <Select items={statusProduct} setSelect={setStatus} />
+              <HTag tag="h4">{t('add-product.state')}</HTag>
+              <Select items={useStateProduct()} setSelect={setStatus} />
             </div>
           </div>
         </div>
         <div className="delete-order__footer d-flex justify-content-end modal-footer">
-          <button className="delete-modal__close">Отменить</button>
+          <button className="delete-modal__close">{t('close.btn')}</button>
           <Button className="create-order__save" onClick={clickCreate}>
             <Save />
-            Створити
+            {t('create.btn')}
           </Button>
         </div>
       </div>
