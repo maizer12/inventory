@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchOrders } from '../../store/slices/orderSlice/asyncActions';
 import './Home.scss';
-import { setCreateOrderModal, setOpenProduct, updateOrder } from '../../store/slices/orderSlice';
+import { setCreateOrderModal, setOpenPage, setOpenProduct, updateOrder } from '../../store/slices/orderSlice';
 import { useTranslation } from 'react-i18next';
 
 const Home: FC = () => {
@@ -26,6 +26,7 @@ const Home: FC = () => {
     return () => {
       dispatch(setOpenProduct(null));
       dispatch(updateOrder([]));
+      dispatch(setOpenPage(1));
     };
   }, []);
 

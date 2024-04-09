@@ -14,7 +14,3 @@ export interface IFetchOrders {
   items: IOrder[];
   count: number;
 }
-export interface IParamsOrder {
-  search?: string;
-  page: number;
-}

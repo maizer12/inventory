@@ -23,7 +23,7 @@ export const OrderTable: FC = () => {
   const handleScroll = (e: UIEvent<HTMLUListElement>) => {
     const { scrollTop, clientHeight, scrollHeight } = e.currentTarget;
 
-    if (scrollHeight - scrollTop === clientHeight) {
+    if (scrollHeight - scrollTop <= clientHeight + 20) {
       if (count && openPage && !isLoading && openPage * 10 < Math.ceil(count / 10) * 10) {
         dispatch(setOpenPage(openPage + 1));
       }
