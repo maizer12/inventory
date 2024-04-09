@@ -57,17 +57,15 @@ export const CreateProductModal: FC = () => {
         <div className="modal-padding">
           <Input
             placeholder={t('add-product.input-name')}
-            className="mb-4"
+            error={errors.name && String(errors.name.message)}
             {...register('name', { required: 'Name is required' })}
           />
-          {errors.name && <p className="error-message">{String(errors.name.message)}</p>}
           <Input
             placeholder={t('add-product.input-s-num')}
-            className="mb-4"
+            error={errors.serialNumber && String(errors.serialNumber.message)}
             {...register('serialNumber', { required: 'Serial number is required' })}
           />
-          {errors.serialNumber && <p className="error-message">{String(errors.serialNumber.message)}</p>}
-          <HTag tag="h4" className="mb-2">
+          <HTag tag="h4" className="mb-2 mt-1">
             {t('add-product.guarantee')}
           </HTag>
           <div className="d-flex create-modal__date mb-4">
@@ -91,34 +89,30 @@ export const CreateProductModal: FC = () => {
           <HTag tag="h4" className="mb-2">
             {t('add-product.price')}
           </HTag>
-          <div className="d-flex create-modal__date mb-4">
-            <label className="label-money">
-              <Input
-                min={0}
-                {...register('priceUAH', {
-                  required: 'Price is required',
-                  min: { value: 0, message: 'Price cannot be negative' },
-                })}
-                placeholder="0"
-                type="number"
-              />
-              <HTag tag="h3">UAH</HTag>
-            </label>
-            <label className="label-money">
-              <Input
-                min={0}
-                {...register('priceUSD', {
-                  required: 'Price is required',
-                  min: { value: 0, message: 'Price cannot be negative' },
-                })}
-                placeholder="0"
-                type="number"
-              />
-              <HTag tag="h3">USD</HTag>
-            </label>
+          <div className="d-flex create-modal__date mb-4 justify-content-between">
+            <Input
+              min={0}
+              {...register('priceUAH', {
+                required: 'Price UAH is required',
+                min: { value: 0, message: 'Price cannot be negative' },
+              })}
+              error={errors.priceUAH && String(errors.priceUAH.message)}
+              money="uah"
+              placeholder="0"
+              type="number"
+            />
+            <Input
+              min={0}
+              {...register('priceUSD', {
+                required: 'Price USD is required',
+                min: { value: 0, message: 'Price cannot be negative' },
+              })}
+              error={errors.priceUSD && String(errors.priceUSD.message)}
+              money="usd"
+              placeholder="0"
+              type="number"
+            />
           </div>
-          {errors.priceUAH && <p className="error-message">{String(errors.priceUAH.message)}</p>}
-          {errors.priceUSD && !errors.priceUAH && <p className="error-message">{String(errors.priceUSD.message)}</p>}
           <div className="create-modal__selects d-flex mb-4">
             <div className="create-modal__select d-flex align-items-center">
               <HTag tag="h4">{t('add-product.status')}</HTag>

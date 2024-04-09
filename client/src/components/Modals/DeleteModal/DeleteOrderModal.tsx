@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { DeleteModal } from '../../../common/Modal/DeleteModal';
 import { IOrder } from '../../../models/IOrder';
-import OrderItem from '../../Order/OrderItem';
+import OrderItem from '../../OrderTable/OrderItem';
 import { useAppDispatch } from '../../../hooks/redux';
 import { setDeleteOrderItem, deleteOrder } from '../../../store/slices/orderSlice';
 import axios from '../../../api';

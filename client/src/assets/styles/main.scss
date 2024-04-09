@@ -50,3 +50,15 @@ main {
     font-size: 18px;
   }
 }
+
+input {
+  &::placeholder {
+    transition: 0.6s;
+  }
+
+  &:focus {
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+}

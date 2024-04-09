@@ -41,10 +41,9 @@ export const CreateOrderModal: FC = () => {
         <div className="modal-padding">
           <Input
             placeholder={t('add-product.input-name')}
-            className="mb-4"
+            error={errors.title && String(errors.title.message)}
             {...register('title', { required: 'Title is required' })}
           />
-          {errors.title && <p className="error-message">{String(errors.title.message)}</p>}
           <Controller
             name="date"
             control={control}

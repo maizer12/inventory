@@ -1,4 +1,4 @@
-export * from './Order';
+export * from './OrderTable';
 export * from './OpenProduct';
 export * from './Product';
 export * from './Modals/DeleteModal/DeleteOrderModal';

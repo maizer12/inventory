@@ -158,25 +158,10 @@
     color: rgb(153, 0, 0);
   }
 }
-.label-money {
-  max-width: 100%;
-  width: 100%;
-  position: relative;
 
-  h3 {
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    position: absolute;
-  }
-
-  input {
-    padding-right: 100px;
-  }
-}
 .error-message {
   color: #f50000;
-  margin-top: -5px;
+
   &::before {
     content: '*';
   }
