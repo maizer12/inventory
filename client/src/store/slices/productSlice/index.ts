@@ -28,6 +28,7 @@ const productSlice = createSlice({
     deleteOrder(state, action: { payload: string }) {
       state.items = state.items.filter((e) => e._id !== action.payload);
       state.deleteProductItem = null;
+      if (state.count) state.count -= 1;
     },
   },
   extraReducers(builder) {

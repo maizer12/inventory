@@ -6,6 +6,7 @@ import { IOrder } from '../../../models/IOrder';
 const initialState: CardsTypes = {
   items: [],
   isLoading: false,
+  openPage: 1,
   error: '',
   count: null,
   openOrder: null,
@@ -23,8 +24,12 @@ const cardsSlice = createSlice({
     setCreateOrderModal(state, action: { payload: boolean }) {
       state.createOrderModal = action.payload;
     },
+    setOpenPage(state, action: { payload: number }) {
+      state.openPage = action.payload;
+    },
     createOrder(state, action: { payload: IOrder }) {
       state.items = [action.payload, ...state.items];
+      if (state.count) state.count += 1;
     },
     setDeleteOrderItem(state, action: { payload: IOrder | null }) {
       state.deleteOrderItem = action.payload;
@@ -32,6 +37,10 @@ const cardsSlice = createSlice({
     deleteOrder(state, action: { payload: string }) {
       state.items = state.items.filter((e) => e._id !== action.payload);
       state.deleteOrderItem = null;
+      if (state.count) state.count -= 1;
+    },
+    updateOrder(state, action: { payload: IOrder[] }) {
+      state.items = action.payload;
     },
   },
   extraReducers(builder) {
@@ -40,7 +49,7 @@ const cardsSlice = createSlice({
     });
     builder.addCase(fetchOrders.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.items = action.payload.items;
+      state.items = [...state.items, ...action.payload.items];
       state.count = action.payload.count;
     });
     builder.addCase(fetchOrders.rejected, (state) => {
@@ -50,6 +59,14 @@ const cardsSlice = createSlice({
   },
 });
 
-export const { setOpenProduct, setCreateOrderModal, createOrder, setDeleteOrderItem, deleteOrder } = cardsSlice.actions;
+export const {
+  setOpenProduct,
+  setCreateOrderModal,
+  createOrder,
+  setDeleteOrderItem,
+  deleteOrder,
+  setOpenPage,
+  updateOrder,
+} = cardsSlice.actions;
 
 export default cardsSlice.reducer;

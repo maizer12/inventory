@@ -9,7 +9,7 @@ import { useTypeProduct, useStatusProduct, useStateProduct } from './_constants'
 import { IProduct, IProductForm } from '../../../models/IProduct';
 import { useTranslation } from 'react-i18next';
 import { LoadPhoto } from './LoadPhoto';
-import { fetchOrders } from '../../../store/slices/orderSlice/asyncActions';
+import { updateOrder } from '../../../store/slices/orderSlice';
 
 export const CreateProductModal: FC = () => {
   const {
@@ -24,7 +24,7 @@ export const CreateProductModal: FC = () => {
   const statusItems = useStatusProduct();
   const typesItems = useTypeProduct();
   const statesItems = useStateProduct();
-  const { openOrder } = useAppSelector((state) => state.orderSlice);
+  const { openOrder, items } = useAppSelector((state) => state.orderSlice);
 
   const dispatch = useAppDispatch();
 
@@ -33,19 +33,33 @@ export const CreateProductModal: FC = () => {
   };
 
   const clickCreate = async (dataForm: IProductForm) => {
+    if (!openOrder) return;
+
     try {
       setLoading(true);
-      if (!openOrder) return '';
-      const { _id } = openOrder;
+
       const body = {
         ...dataForm,
         imageUrl: imgLink,
       };
-      const { data } = await axios.post<IProduct>(`/product/order/${_id}`, body);
+
+      const { data } = await axios.post<IProduct>(`/product/order/${openOrder._id}`, body);
       dispatch(createProduct(data));
-      dispatch(fetchOrders());
+
+      const updatedOrders = items.map((order) =>
+        order._id === openOrder._id
+          ? {
+              ...order,
+              amountUAH: order.amountUAH + Number(dataForm.priceUAH),
+              productCount: order.productCount + 1,
+              amountUSD: order.amountUSD + Number(dataForm.priceUSD),
+            }
+          : order,
+      );
+
+      dispatch(updateOrder(updatedOrders));
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       setLoading(false);
     }

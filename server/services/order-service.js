@@ -66,11 +66,16 @@ class OrderService {
     }
   }
 
-  async getAll(searchQuery) {
+  async getAll(searchQuery, page = 1, limit = 10) {
+    page = page > 0 ? page : 1;
+    limit = limit > 0 ? limit : 10;
+
     let match = {};
     if (searchQuery && searchQuery.trim()) {
       match = { title: { $regex: searchQuery, $options: 'i' } };
     }
+
+    const skip = (page - 1) * limit;
 
     try {
       const result = await OrderModel.aggregate([
@@ -84,7 +89,7 @@ class OrderService {
         },
         {
           $facet: {
-            items: [{ $addFields: { productCount: { $size: '$products' } } }],
+            items: [{ $skip: skip }, { $limit: limit }, { $addFields: { productCount: { $size: '$products' } } }],
             totalCount: [{ $count: 'count' }],
           },
         },

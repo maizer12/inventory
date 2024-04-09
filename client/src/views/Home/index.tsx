@@ -12,7 +12,7 @@ const Home: FC = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const search = useAppSelector((state) => state.optionsSlice.search);
-  const { openOrder, createOrderModal, deleteOrderItem, count, isLoading } = useAppSelector(
+  const { openOrder, createOrderModal, deleteOrderItem, count, isLoading, openPage } = useAppSelector(
     (state) => state.orderSlice,
   );
   const { createProductModal } = useAppSelector((state) => state.productSlice);
@@ -20,7 +20,7 @@ const Home: FC = () => {
 
   useEffect(() => {
     dispatch(fetchOrders());
-  }, [search]);
+  }, [search, openPage]);
 
   useEffect(() => {
     return () => {
