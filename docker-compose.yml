@@ -2,10 +2,10 @@ version: '3.8'
 
 services:
   server:
-    image: js-task
+    image: js-task-client
     ports:
       - '4000:4000'
   client:
-    image: js-task
+    image: js-task-client
     ports:
       - '5173:5173'
