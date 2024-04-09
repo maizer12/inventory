@@ -1,0 +1,25 @@
+.react-datepicker__day--selected {
+  background-color: var(--primary) !important;
+  border-radius: 0;
+  transition: 0.4s ease-in-out;
+}
+.react-datepicker__input-container {
+  input {
+    font-size: 18px;
+  }
+}
+.react-datepicker__header:not(.react-datepicker__header--has-time-select) {
+  border-radius: 0;
+  background-color: var(--black);
+
+  .react-datepicker__current-month,
+  .react-datepicker__day-name {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #fff;
+  }
+}
+.react-datepicker__day {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}

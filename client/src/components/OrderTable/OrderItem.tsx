@@ -16,7 +16,7 @@ const OrderItem: FC<IProps> = ({ item }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const active = useAppSelector((state) => state.orderSlice.openOrder);
-  const checkActive = !!active && active._id === item._id ? 'active-btn' : '';
+  const checkActive = !!active && active._id === item._id ? 'active-item' : '';
 
   const openProducts = () => {
     dispatch(setOpenProduct(item));
@@ -30,12 +30,12 @@ const OrderItem: FC<IProps> = ({ item }) => {
   const { day, month, year, numMonth } = normalizeDate(item.date);
 
   return (
-    <li className="order-item mb-3 d-grid block anim-opacity">
+    <li className={'order-item mb-3 d-grid block anim-opacity ' + checkActive}>
       <HTag tag="h3" variant="gray" line={true} className="order-item__title">
         {item.title}
       </HTag>
       <div className="d-flex align-items-center">
-        <button className={'order-item__menu ' + checkActive} onClick={openProducts}>
+        <button className="order-item__menu" onClick={openProducts}>
           <List strokeWidth={4} />
         </button>
         <div>
@@ -49,7 +49,7 @@ const OrderItem: FC<IProps> = ({ item }) => {
         <PTag size="sm" className="text-center">
           {`${numMonth.toString().padStart(2, '0')} / ${year}`}
         </PTag>
-        <PTag size="lg" className="text-center" variant="dark">
+        <PTag size="lg" className="order-item__date-big text-center" variant="dark">
           {`${day} / ${month} / ${year}`}
         </PTag>
       </div>

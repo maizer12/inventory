@@ -2,6 +2,7 @@
 @import './vars.scss';
 @import './common.scss';
 @import './anim.scss';
+@import './date.scss';
 
 body {
   background-color: #f0f3f5;
@@ -39,15 +40,6 @@ main {
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #dbe2e5;
-  }
-}
-
-.react-datepicker__day--selected {
-  background-color: var(--primary) !important;
-}
-.react-datepicker__input-container {
-  input {
-    font-size: 18px;
   }
 }
 

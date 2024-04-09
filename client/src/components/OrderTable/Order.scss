@@ -36,11 +36,6 @@
     text-align: center;
   }
 
-  .active-btn {
-    color: var(--primary);
-    border-color: var(--primary);
-  }
-
   &__balance {
     margin-left: auto;
   }
@@ -55,5 +50,22 @@
 
   &__arrow {
     display: none;
+  }
+}
+.active-item {
+  .order-item__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    background-color: var(--gray);
+    color: #fff;
+    height: 100%;
+    width: 50px;
+  }
+  .order-item__menu {
+    color: var(--primary);
+    border-color: var(--primary);
   }
 }

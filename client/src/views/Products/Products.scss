@@ -10,3 +10,23 @@
     }
   }
 }
+@media (max-width: 1400px) {
+  .products-header {
+    margin-bottom: 42px;
+
+    &__item {
+      select {
+        width: 240px;
+      }
+    }
+  }
+}
+@media (max-width: 1200px) {
+  .products-header {
+    &__item {
+      select {
+        width: 180px;
+      }
+    }
+  }
+}

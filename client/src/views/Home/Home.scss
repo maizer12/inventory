@@ -5,7 +5,7 @@
 .show-product {
   .order-content {
     display: grid;
-    grid-template-columns: 3.2fr 6fr;
+    grid-template-columns: 3.4fr 6fr;
     gap: 20px;
   }
 
@@ -13,6 +13,7 @@
     display: flex !important;
     justify-content: left;
     position: relative;
+    padding: 18px 32px;
 
     &__title,
     &__balance,
@@ -21,15 +22,120 @@
     }
   }
 
-  .order-item__arrow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: 0;
-    background-color: var(--gray);
-    color: #fff;
-    height: 100%;
-    width: 50px;
+  .order-item__date {
+    margin-left: 0;
+
+    p {
+      text-align: left !important;
+    }
+  }
+}
+@media (max-width: 1600px) {
+  .show-product {
+    .order-item__date {
+      p {
+      }
+      &-big {
+        font-size: 16px;
+      }
+    }
+    .order-item__menu {
+      padding: 6px;
+      margin-right: 16px;
+    }
+    .order-item {
+      padding: 15px 26px;
+    }
+    .order-item__arrow {
+      width: 40px;
+      svg {
+        width: 60%;
+      }
+    }
+  }
+}
+@media (max-width: 1400px) {
+  .home {
+    .add-btn {
+      max-width: 40px;
+      max-height: 40px;
+    }
+    .order-content {
+      margin-top: 42px;
+    }
+    .open-product__header {
+      padding: 21px 26px;
+
+      h2 {
+        font-size: 18px;
+      }
+    }
+    .order-content {
+      gap: 10px;
+    }
+    .product-item {
+      padding: 6px 24px 8px 29px;
+    }
+    .product-item__info {
+      span {
+        width: 12px;
+        height: 12px;
+      }
+    }
+    .product-item__img {
+      height: 45px;
+      margin-left: 0;
+    }
+    .open-product__btn {
+      font-size: 14px;
+    }
+    .product-item__desc {
+      h3 {
+        font-size: 16px;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+}
+@media (max-width: 1300px) {
+  .show-product {
+    .order-item {
+      padding: 12px 18px;
+
+      h3 {
+        font-size: 14px;
+      }
+    }
+    .order-item__date {
+      p {
+        font-size: 10px;
+      }
+      .order-item__date-big {
+        font-size: 12px;
+      }
+    }
+
+    .order-item__menu {
+      width: 26px;
+      height: 26px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+
+      svg {
+        max-width: 16px;
+        height: auto;
+      }
+    }
+    .order-item__arrow {
+      width: 32px;
+    }
+  }
+
+  main {
+    padding: 3% 6%;
   }
 }
