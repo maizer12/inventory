@@ -9,6 +9,7 @@ import { useTypeProduct, useStatusProduct, useStateProduct } from './_constants'
 import { IProduct, IProductForm } from '../../../models/IProduct';
 import { useTranslation } from 'react-i18next';
 import { LoadPhoto } from './LoadPhoto';
+import { fetchOrders } from '../../../store/slices/orderSlice/asyncActions';
 
 export const CreateProductModal: FC = () => {
   const {
@@ -17,6 +18,7 @@ export const CreateProductModal: FC = () => {
     control,
     formState: { errors },
   } = useForm<IProductForm>();
+  const [loading, setLoading] = useState(false);
   const { t } = useTranslation();
   const [imgLink, setImgLink] = useState('');
   const statusItems = useStatusProduct();
@@ -32,6 +34,7 @@ export const CreateProductModal: FC = () => {
 
   const clickCreate = async (dataForm: IProductForm) => {
     try {
+      setLoading(true);
       if (!openOrder) return '';
       const { _id } = openOrder;
       const body = {
@@ -40,8 +43,11 @@ export const CreateProductModal: FC = () => {
       };
       const { data } = await axios.post<IProduct>(`/product/order/${_id}`, body);
       dispatch(createProduct(data));
+      dispatch(fetchOrders());
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -146,7 +152,7 @@ export const CreateProductModal: FC = () => {
         </div>
         <div className="delete-order__footer d-flex justify-content-end modal-footer">
           <button className="delete-modal__close">{t('close.btn')}</button>
-          <Button className="create-order__save" type="submit">
+          <Button className="create-order__save" type="submit" isLoading={loading}>
             <Save />
             {t('create.btn')}
           </Button>

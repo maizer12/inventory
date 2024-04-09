@@ -1,17 +1,15 @@
 import { useTranslation } from 'react-i18next';
-import { HTag } from '../../common';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { setOpenProduct } from '../../store/slices/orderSlice';
-import { setCreateProductModal } from '../../store/slices/productSlice';
 import './OpenProduct.scss';
 import { X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useAnimClose } from '../../hooks/useAnimClose';
 import { ProductsTable } from '../ProductsTable';
+import { OpenProductPanel } from './OpenProductPanel';
 
 export const OpenProduct = () => {
   const { t } = useTranslation();
-  const { openOrder } = useAppSelector((state) => state.orderSlice);
   const { isLoading, items, error } = useAppSelector((state) => state.productSlice);
   const dispatch = useAppDispatch();
   const errorMessage = error ? t(error) : '';
@@ -21,10 +19,6 @@ export const OpenProduct = () => {
   };
 
   const anim = useAnimClose(closeOpenProducts);
-
-  const openCreateProduct = () => {
-    dispatch(setCreateProductModal(true));
-  };
 
   return (
     <motion.div
@@ -37,15 +31,7 @@ export const OpenProduct = () => {
         <button className="open-product__close button-round" onClick={anim.handleClose}>
           <X />
         </button>
-        <div className="open-product__header">
-          <HTag tag="h2" className="mb-4">
-            {openOrder?.title}
-          </HTag>
-          <button className="open-product__btn d-flex align-items-center" onClick={openCreateProduct}>
-            <span className="d-flex justify-content-center align-items-center">+</span>
-            {t('add-product.title')}
-          </button>
-        </div>
+        <OpenProductPanel />
         <ProductsTable
           items={items}
           error={errorMessage}

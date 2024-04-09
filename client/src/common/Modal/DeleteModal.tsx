@@ -6,11 +6,12 @@ import { useTranslation } from 'react-i18next';
 
 interface IProps {
   children: ReactNode;
+  isLoading?: boolean;
   clickDelete: () => void;
   setClose: (bool: boolean) => void;
 }
 
-export const DeleteModal: FC<IProps> = ({ children, setClose, clickDelete }) => {
+export const DeleteModal: FC<IProps> = ({ children, setClose, clickDelete, isLoading = false }) => {
   const { t } = useTranslation();
 
   return (
@@ -18,7 +19,7 @@ export const DeleteModal: FC<IProps> = ({ children, setClose, clickDelete }) => 
       {children}
       <div className="d-flex justify-content-end modal-footer">
         <button className="delete-modal__close">{t('close.btn')}</button>
-        <Button className="delete-modal__remove" onClick={clickDelete}>
+        <Button className="delete-modal__remove" onClick={clickDelete} isLoading={isLoading}>
           <Trash2 /> {t('remove.btn')}
         </Button>
       </div>

@@ -7,6 +7,10 @@
     width: 60px;
     max-height: 60px;
     margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--blue-light);
 
     img {
       height: 60px;
