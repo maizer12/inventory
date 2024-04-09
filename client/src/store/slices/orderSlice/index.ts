@@ -6,7 +6,7 @@ import { IOrder } from '../../../models/IOrder';
 const initialState: CardsTypes = {
   items: [],
   isLoading: false,
-  status: '',
+  error: '',
   count: null,
   openOrder: null,
   createOrderModal: false,
@@ -36,7 +36,6 @@ const cardsSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(fetchOrders.pending, (state) => {
-      state.status = 'loading';
       state.isLoading = true;
     });
     builder.addCase(fetchOrders.fulfilled, (state, action) => {
@@ -46,7 +45,7 @@ const cardsSlice = createSlice({
     });
     builder.addCase(fetchOrders.rejected, (state) => {
       state.isLoading = false;
-      state.status = 'err';
+      state.error = 'error.fetchOrders';
     });
   },
 });

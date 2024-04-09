@@ -63,8 +63,19 @@
   max-width: 100%;
   min-height: 140px;
   background-color: #fff;
+  padding: 20px;
 
   svg {
     display: block;
+  }
+
+  &.danger {
+    color: rgb(172, 2, 2);
+
+    h4 {
+      &::before {
+        content: '*';
+      }
+    }
   }
 }

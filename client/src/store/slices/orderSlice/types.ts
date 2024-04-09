@@ -4,7 +4,7 @@ export interface CardsTypes {
   items: IOrder[];
   isLoading: boolean;
   count: null | number;
-  status: '' | 'err' | 'loading';
+  error: string;
   openOrder: null | IOrder;
   createOrderModal: boolean;
   deleteOrderItem: IOrder | null;

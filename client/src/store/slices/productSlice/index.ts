@@ -5,6 +5,7 @@ import { IProduct } from '../../../models/IProduct';
 
 const initialState: ProductSliceTypes = {
   items: [],
+  error: '',
   count: null,
   isLoading: false,
   createProductModal: false,
@@ -40,6 +41,7 @@ const productSlice = createSlice({
     });
     builder.addCase(fetchOrderProducts.rejected, (state) => {
       state.isLoading = false;
+      state.error = 'error.fetchProducts';
     });
     builder.addCase(fetchProducts.pending, (state) => {
       state.items = [];
@@ -52,6 +54,7 @@ const productSlice = createSlice({
     });
     builder.addCase(fetchProducts.rejected, (state) => {
       state.isLoading = false;
+      state.error = 'error.fetchProducts';
     });
   },
 });

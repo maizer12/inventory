@@ -1,7 +1,8 @@
 import { IProduct } from '../../../models/IProduct';
 
 export interface ProductSliceTypes {
-  items: [] | IProduct[];
+  items: IProduct[];
+  error: string;
   count: number | null;
   isLoading: boolean;
   createProductModal: boolean;

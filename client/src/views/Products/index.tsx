@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 import './Products.scss';
-import { EmptyTable, HTag, Loader, PTag, Select } from '../../common';
+import { AlertTable, HTag, Loader, PTag, Select } from '../../common';
 import { Product } from '../../components';
 import { useTypeProduct, useStatusProduct } from '../../components/Modals/CreateProductModal/_constants';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
@@ -40,7 +40,7 @@ const Products: FC = () => {
           {items.length ? (
             items.map((e) => <Product className="block table-item mb-4" key={e._id} moreInfo={true} item={e} />)
           ) : (
-            <EmptyTable />
+            <AlertTable />
           )}
         </ul>
       )}

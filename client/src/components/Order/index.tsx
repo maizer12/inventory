@@ -2,17 +2,24 @@ import { FC } from 'react';
 import OrderItem from './OrderItem';
 import './Order.scss';
 import { useAppSelector } from '../../hooks/redux';
-import { EmptyTable, Loader } from '../../common';
+import { AlertTable, Loader } from '../../common';
+import { useTranslation } from 'react-i18next';
 
 export const OrderTable: FC = () => {
-  const { items, isLoading } = useAppSelector((state) => state.orderSlice);
+  const { t } = useTranslation();
+  const { items, isLoading, error } = useAppSelector((state) => state.orderSlice);
+  const errorMessage = error ? t(error) : '';
 
   if (isLoading) {
     return <Loader full={true} />;
   }
 
+  if (errorMessage) {
+    return <AlertTable variant="danger">{errorMessage}</AlertTable>;
+  }
+
   if (!items.length) {
-    return <EmptyTable />;
+    return <AlertTable />;
   }
 
   return (

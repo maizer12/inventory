@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { EmptyTable, HTag, Loader } from '../../common';
+import { AlertTable, HTag, Loader } from '../../common';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { setOpenProduct } from '../../store/slices/orderSlice';
 import { setCreateProductModal } from '../../store/slices/productSlice';
@@ -12,8 +12,9 @@ import { useAnimClose } from '../../hooks/useAnimClose';
 export const OpenProduct = () => {
   const { t } = useTranslation();
   const { openOrder } = useAppSelector((state) => state.orderSlice);
-  const { isLoading, items } = useAppSelector((state) => state.productSlice);
+  const { isLoading, items, error } = useAppSelector((state) => state.productSlice);
   const dispatch = useAppDispatch();
+  const errorMessage = error ? t(error) : '';
 
   const closeOpenProducts = (a: null) => {
     dispatch(setOpenProduct(a));
@@ -53,7 +54,8 @@ export const OpenProduct = () => {
             <Loader />
           </div>
         )}
-        {!isLoading && !items?.length && <EmptyTable />}
+        {errorMessage && <AlertTable variant="danger">{errorMessage}</AlertTable>}
+        {!isLoading && !items?.length && !errorMessage && <AlertTable />}
       </div>
     </motion.div>
   );
