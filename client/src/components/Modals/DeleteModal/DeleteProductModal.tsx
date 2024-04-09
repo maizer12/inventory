@@ -1,17 +1,18 @@
 import { FC, useState } from 'react';
 import { DeleteModal } from '../../../common/Modal/DeleteModal';
-import { useAppDispatch } from '../../../hooks/redux';
-import { setDeleteProductItem, deleteOrder } from '../../../store/slices/productSlice';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
+import { setDeleteProductItem, deleteProduct } from '../../../store/slices/productSlice';
 import axios from '../../../api';
 import { IProduct } from '../../../models/IProduct';
 import { Product } from '../../Product';
-import { fetchOrders } from '../../../store/slices/orderSlice/asyncActions';
+import { updateOrder } from '../../../store/slices/orderSlice';
 
 interface IProps {
   item: IProduct;
 }
 
 export const DeleteProductModal: FC<IProps> = ({ item }) => {
+  const items = useAppSelector((state) => state.orderSlice.items);
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
 
@@ -24,8 +25,18 @@ export const DeleteProductModal: FC<IProps> = ({ item }) => {
       setLoading(true);
       const id = item._id;
       await axios.delete(`/product/${id}`);
-      dispatch(deleteOrder(id));
-      dispatch(fetchOrders());
+      const updatedOrders = items.map((order) =>
+        order._id === item.order
+          ? {
+              ...order,
+              amountUAH: order.amountUAH - Number(item.priceUAH),
+              productCount: order.productCount - 1,
+              amountUSD: order.amountUSD - Number(item.priceUSD),
+            }
+          : order,
+      );
+      dispatch(updateOrder(updatedOrders));
+      dispatch(deleteProduct(id));
     } catch (err) {
       console.log(err);
     } finally {

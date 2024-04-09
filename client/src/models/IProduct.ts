@@ -8,6 +8,7 @@ export interface IProductBase {
   status: number | string;
   type: string | number;
   state: number | string;
+  order: string;
 }
 
 export interface IProductForm extends IProductBase {}

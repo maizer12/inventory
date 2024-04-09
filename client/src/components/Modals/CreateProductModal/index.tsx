@@ -34,6 +34,7 @@ export const CreateProductModal: FC = () => {
 
   const clickCreate = async (dataForm: IProductForm) => {
     if (!openOrder) return;
+    const { _id: openOrderId, amountUAH, amountUSD, productCount } = openOrder;
 
     try {
       setLoading(true);
@@ -43,16 +44,16 @@ export const CreateProductModal: FC = () => {
         imageUrl: imgLink,
       };
 
-      const { data } = await axios.post<IProduct>(`/product/order/${openOrder._id}`, body);
+      const { data } = await axios.post<IProduct>(`/product/order/${openOrderId}`, body);
       dispatch(createProduct(data));
 
       const updatedOrders = items.map((order) =>
-        order._id === openOrder._id
+        order._id === openOrderId
           ? {
               ...order,
-              amountUAH: order.amountUAH + Number(dataForm.priceUAH),
-              productCount: order.productCount + 1,
-              amountUSD: order.amountUSD + Number(dataForm.priceUSD),
+              amountUAH: amountUAH + Number(dataForm.priceUAH),
+              productCount: productCount + 1,
+              amountUSD: amountUSD + Number(dataForm.priceUSD),
             }
           : order,
       );
