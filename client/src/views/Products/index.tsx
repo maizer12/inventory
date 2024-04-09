@@ -13,11 +13,12 @@ const Products: FC = () => {
   const [productStatus, setProductStatus] = useState<string | number>('All');
   const { items, count, isLoading, error } = useAppSelector((state) => state.productSlice);
   const errorMessage = error ? t(error) : '';
+  const search = useAppSelector((state) => state.optionsSlice.search);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchProducts({ productStatus, productType }));
-  }, [productStatus, productType, dispatch]);
+  }, [productStatus, productType, search]);
 
   return (
     <main className="anim-opacity product-page">

@@ -66,9 +66,17 @@ class OrderService {
     }
   }
 
-  async getAll() {
+  async getAll(searchQuery) {
+    let match = {};
+    if (searchQuery && searchQuery.trim()) {
+      match = { title: { $regex: searchQuery, $options: 'i' } };
+    }
+
     try {
       const result = await OrderModel.aggregate([
+        {
+          $match: match,
+        },
         {
           $sort: {
             createdAt: -1,

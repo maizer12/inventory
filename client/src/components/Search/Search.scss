@@ -1,14 +1,31 @@
 .search {
-  background-color: var(--white);
-  padding: 8px 12px;
-  border-radius: 4px;
-  max-width: 420px;
+  position: relative;
+  width: 420px;
   display: block;
-  min-width: 100%;
-  width: 100%;
 
-  &::placeholder {
-    color: var(--black);
-    font-weight: bold;
+  input {
+    background-color: var(--white);
+    padding: 8px 12px;
+    border-radius: 4px;
+    width: 100%;
+
+    &::placeholder {
+      color: var(--black);
+      font-weight: bold;
+    }
+  }
+
+  button {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    svg {
+      width: 18px;
+      height: fit-content;
+    }
   }
 }

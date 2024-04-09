@@ -15,10 +15,11 @@ class ProductService {
 
   async getAll(params) {
     try {
-      const { productType, productStatus } = params;
+      const { productType, productStatus, search } = params;
 
       const query = {};
 
+      if (search) query.name = search;
       if (productType) query.type = productType;
       if (productStatus) query.status = productStatus;
 

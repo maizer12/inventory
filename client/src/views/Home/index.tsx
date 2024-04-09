@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 const Home: FC = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const search = useAppSelector((state) => state.optionsSlice.search);
   const { openOrder, createOrderModal, deleteOrderItem, count, isLoading } = useAppSelector(
     (state) => state.orderSlice,
   );
@@ -19,7 +20,7 @@ const Home: FC = () => {
 
   useEffect(() => {
     dispatch(fetchOrders());
-  }, []);
+  }, [search]);
 
   useEffect(() => {
     return () => {
