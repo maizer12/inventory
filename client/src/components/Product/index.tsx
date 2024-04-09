@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { DotStatus, HTag, PTag } from '../../common';
-import { Trash2 } from 'lucide-react';
+import { ImageOff, Trash2 } from 'lucide-react';
 import { ProductProps } from './Product.types';
 import cn from 'classnames';
 import './Product.scss';
@@ -23,7 +23,9 @@ export const Product: FC<ProductProps> = ({ className, moreInfo = false, item })
     <li className={classNames}>
       <div className="product-item__info d-flex align-items-center">
         <DotStatus variant={item.status ? 'disable' : 'active'} />
-        <img className="product-item__img" src={baseURL + item.imageUrl} alt="product" />
+        <div className="product-item__img">
+          {item.imageUrl ? <img src={baseURL + item.imageUrl} alt="product" /> : <ImageOff />}
+        </div>
         <div className="product-item__desc">
           <HTag tag="h3" line={true}>
             {item.name}

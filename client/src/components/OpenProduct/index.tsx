@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
-import { AlertTable, HTag, Loader } from '../../common';
+import { HTag } from '../../common';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { setOpenProduct } from '../../store/slices/orderSlice';
 import { setCreateProductModal } from '../../store/slices/productSlice';
-import { Product } from '../Product';
 import './OpenProduct.scss';
 import { X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useAnimClose } from '../../hooks/useAnimClose';
+import { ProductsTable } from '../ProductsTable';
 
 export const OpenProduct = () => {
   const { t } = useTranslation();
@@ -46,16 +46,14 @@ export const OpenProduct = () => {
             {t('add-product.title')}
           </button>
         </div>
-        <ul className="p-0 scroll-style open-product__items">
-          {items && items.map((e) => <Product key={e._id} item={e} />)}
-        </ul>
-        {isLoading && (
-          <div className="wrapper-info d-grid justify-content-center align-items-center">
-            <Loader />
-          </div>
-        )}
-        {errorMessage && <AlertTable variant="danger">{errorMessage}</AlertTable>}
-        {!isLoading && !items?.length && !errorMessage && <AlertTable />}
+        <ProductsTable
+          items={items}
+          error={errorMessage}
+          isLoading={isLoading}
+          className="open-product__items"
+          moreInfo={false}
+          fullPage={false}
+        />
       </div>
     </motion.div>
   );
