@@ -1,11 +1,8 @@
 import 'dotenv/config';
 import express from 'express';
 import mongoose from 'mongoose';
-import { checkAuth } from './utils/checkAuth.js';
 import orderRoutes from './routes/order-routes.js';
 import productRoutes from './routes/product-routes.js';
-import AuthRoutes from './routes/AuthRoutes.js';
-import userRoutes from './routes/user-routes.js';
 import multer from 'multer';
 import cors from 'cors';
 import http from 'http';
@@ -39,7 +36,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/uploads', express.static('uploads'));
 
-app.post('/api/upload', checkAuth, upload.single('image'), (req, res) => {
+app.post('/api/upload', upload.single('image'), (req, res) => {
   res.json({
     url: `/uploads/${req.file.filename}`,
   });
