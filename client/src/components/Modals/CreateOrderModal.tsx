@@ -42,7 +42,7 @@ export const CreateOrderModal: FC = () => {
           <Input
             placeholder={t('add-product.input-name')}
             error={errors.title && String(errors.title.message)}
-            {...register('title', { required: 'Title is required' })}
+            {...register('title', { required: t('error.modal.name') })}
           />
           <Controller
             name="date"

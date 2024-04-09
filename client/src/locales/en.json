@@ -1,5 +1,5 @@
 {
-  "home.title": "Orders",
+  "home.title": "Order",
   "products.title": "Products",
   "order-item.items": "Products",
   "sidebar.home": "Home",
@@ -11,17 +11,17 @@
   "add-product.input-name": "Product Name",
   "add-order.input-name": "Order Name",
   "add-product.input-s-num": "Serial Number",
-  "add-product.guarantee": "Guarantee Term:",
+  "add-product.guarantee": "Warranty Period:",
   "add-product.price": "Price:",
-  "add-product.state": "State:",
+  "add-product.state": "Condition:",
   "add-product.status": "Status:",
   "add-product.type": "Type:",
   "create.btn": "Create",
   "close.btn": "Cancel",
-  "remove.btn": "Delete",
+  "remove.btn": "Remove",
   "default.selector": "Select",
   "status": {
-    "free": "Available",
+    "free": "Free",
     "inRepair": "In Repair"
   },
   "state": {
@@ -35,5 +35,16 @@
     "tv": "TV"
   },
   "daysOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-  "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  "error.fetchOrders": "Sorry, we could not load your orders due to a technical error; please refresh the page or come back to us later",
+  "error.fetchProducts": "Sorry, we could not load information about products due to a technical error; please refresh the page or come back to us later",
+  "error.modal.name": "Name is required",
+  "error.modal.ser-number": "Serial number is required",
+  "error.modal.price-uah": "Price in UAH is mandatory",
+  "error.modal.price-usd": "Price in USD is mandatory",
+  "error.modal.price-empty": "Price cannot be negative",
+  "search.placeholder": "Search",
+  "table.with": "with",
+  "table.to": "to",
+  "table.more.text": "Additional title that I did not add to the database due to laziness"
 }

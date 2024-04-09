@@ -73,12 +73,12 @@ export const CreateProductModal: FC = () => {
           <Input
             placeholder={t('add-product.input-name')}
             error={errors.name && String(errors.name.message)}
-            {...register('name', { required: 'Name is required' })}
+            {...register('name', { required: t('error.modal.name') })}
           />
           <Input
             placeholder={t('add-product.input-s-num')}
             error={errors.serialNumber && String(errors.serialNumber.message)}
-            {...register('serialNumber', { required: 'Serial number is required' })}
+            {...register('serialNumber', { required: t('error.modal.ser-number') })}
           />
           <HTag tag="h4" className="mb-2 mt-1">
             {t('add-product.guarantee')}
@@ -108,8 +108,8 @@ export const CreateProductModal: FC = () => {
             <Input
               min={0}
               {...register('priceUAH', {
-                required: 'Price UAH is required',
-                min: { value: 0, message: 'Price cannot be negative' },
+                required: t('error.modal.price-uah'),
+                min: { value: 0, message: t('error.modal.price-empty') },
               })}
               error={errors.priceUAH && String(errors.priceUAH.message)}
               money="uah"
@@ -119,8 +119,8 @@ export const CreateProductModal: FC = () => {
             <Input
               min={0}
               {...register('priceUSD', {
-                required: 'Price USD is required',
-                min: { value: 0, message: 'Price cannot be negative' },
+                required: t('error.modal.price-usd'),
+                min: { value: 0, message: t('error.modal.price-empty') },
               })}
               error={errors.priceUSD && String(errors.priceUSD.message)}
               money="usd"

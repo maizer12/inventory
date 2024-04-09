@@ -9,8 +9,10 @@ import { setDeleteProductItem } from '../../store/slices/productSlice';
 import { useArrStates, useArrStatus } from './_constant';
 import { dataFormatter } from '../../helpers/dateFormatter';
 import { baseURL } from '../../api';
+import { useTranslation } from 'react-i18next';
 
 export const Product: FC<ProductProps> = ({ className, moreInfo = false, item }) => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const classNames = cn(className, 'product-item', 'd-flex', { 'more-info': moreInfo }, 'anim-opacity');
   const arrStates = useArrStates();
@@ -42,10 +44,10 @@ export const Product: FC<ProductProps> = ({ className, moreInfo = false, item })
         <>
           <div>
             <PTag size="md" variant="dark">
-              с {dataFormatter(item.warrantyStartDate)}
+              {`${t('table.with')} ${dataFormatter(item.warrantyStartDate)}`}
             </PTag>
             <PTag size="md" variant="dark">
-              по {dataFormatter(item.warrantyEndDate)}
+              {`${t('table.to')} ${dataFormatter(item.warrantyEndDate)}`}
             </PTag>
           </div>
           <HTag tag="h3">{arrStates[item.state]}</HTag>
@@ -57,7 +59,7 @@ export const Product: FC<ProductProps> = ({ className, moreInfo = false, item })
           </div>
 
           <HTag line={true} tag="h3">
-            Дополнительный заголовок, который я не добавил в базу данных из-за лени
+            {t('table.more.text')}
           </HTag>
           <div>
             <PTag size="sm">06/12</PTag>

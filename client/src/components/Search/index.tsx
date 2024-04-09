@@ -4,8 +4,10 @@ import { useAppDispatch } from '../../hooks/redux';
 import { setSearch } from '../../store/slices/optionsSlice';
 import debounce from 'lodash.debounce';
 import { X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Search: FC = () => {
+  const { t } = useTranslation();
   const [value, setValue] = useState<string>('');
   const dispatch = useAppDispatch();
 
@@ -28,7 +30,7 @@ const Search: FC = () => {
   };
   return (
     <label className="search">
-      <input className="search" placeholder="Поиск" onChange={changeValue} value={value} />
+      <input className="search" placeholder={t('search.placeholder')} onChange={changeValue} value={value} />
       {value && (
         <button className="button-round anim-opacity" onClick={clearInput}>
           <X />
