@@ -12,7 +12,7 @@ const ProductSchema = new Schema(
     serialNumber: {
       type: String,
       required: true,
-      unique: true,
+      //unique: true,
       trim: true,
     },
     imageUrl: {

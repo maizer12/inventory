@@ -13,6 +13,7 @@ export const CreateOrderModal: FC = () => {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm<IOrder>();
 
@@ -27,7 +28,8 @@ export const CreateOrderModal: FC = () => {
     try {
       setLoading(true);
       const { data } = await axios.post<IOrder>('/orders', dataForm);
-      dispatch(createOrder(data));
+      dispatch(createOrder({ ...data }));
+      reset();
     } catch (err) {
       console.log(err);
     } finally {

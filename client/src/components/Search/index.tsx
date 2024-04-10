@@ -5,6 +5,7 @@ import { setSearch } from '../../store/slices/optionsSlice';
 import debounce from 'lodash.debounce';
 import { X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { updateOrder } from '../../store/slices/orderSlice';
 
 const Search: FC = () => {
   const { t } = useTranslation();
@@ -18,6 +19,7 @@ const Search: FC = () => {
 
   const startSearch = useCallback(
     debounce((searchValue: string) => {
+      dispatch(updateOrder([]));
       dispatch(setSearch(searchValue));
     }, 350),
     [dispatch],

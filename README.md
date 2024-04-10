@@ -18,7 +18,7 @@ Deployment Instructions
 ## Using Docker
 
 1. `docker build -t js-task .`
-2. `docker run -d -p 5173:5173 -p 4000:4000 js-task` or `docker-compose up`
+2. `docker run -p 5173:5173 -p 4000:4000 js-task` or `docker-compose up`
 
 ## Manual Launch
 

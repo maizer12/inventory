@@ -16,6 +16,7 @@ export const CreateProductModal: FC = () => {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm<IProductForm>();
   const [loading, setLoading] = useState(false);
@@ -34,7 +35,7 @@ export const CreateProductModal: FC = () => {
 
   const clickCreate = async (dataForm: IProductForm) => {
     if (!openOrder) return;
-    const { _id: openOrderId, amountUAH, amountUSD, productCount } = openOrder;
+    const { _id: openOrderId } = openOrder;
 
     try {
       setLoading(true);
@@ -51,14 +52,16 @@ export const CreateProductModal: FC = () => {
         order._id === openOrderId
           ? {
               ...order,
-              amountUAH: amountUAH + Number(dataForm.priceUAH),
-              productCount: productCount + 1,
-              amountUSD: amountUSD + Number(dataForm.priceUSD),
+              amountUAH: order.amountUAH + Number(dataForm.priceUAH),
+              productCount: order.productCount + 1,
+              amountUSD: order.amountUSD + Number(dataForm.priceUSD),
             }
           : order,
       );
 
       dispatch(updateOrder(updatedOrders));
+      reset();
+      setImgLink('');
     } catch (err) {
       console.error(err);
     } finally {
