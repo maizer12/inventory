@@ -20,7 +20,7 @@ export const Modal: FC<IModalProps> = ({ setClose, children, title, className = 
       exit={{ opacity: 0 }}
       transition={{ duration: 0.7, ease: 'easeInOut' }}
     >
-      <div className={styles.main} onClick={anim.handleClose}>
+      <div className={styles.main + ' scroll-style'} onClick={anim.handleClose}>
         <div className={styles.content + ` ${className}`} onClick={(e) => e.stopPropagation()}>
           <button className={'button-round ' + styles.close} onClick={anim.handleClose}>
             <X />

@@ -67,7 +67,7 @@ export const CreateProductModal: FC = () => {
   };
 
   return (
-    <Modal setClose={closeModal} title={t('add-product.title')}>
+    <Modal setClose={closeModal} title={t('add-product.title')} className="create-modal-order">
       <form className="create-modal" onSubmit={handleSubmit((data: IProductForm) => clickCreate(data))}>
         <div className="modal-padding">
           <Input
