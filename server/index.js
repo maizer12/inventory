@@ -48,7 +48,7 @@ app.use('/api', productRoutes);
 const server = http.createServer(app);
 const io = new SocketIo(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173', 'https://js-task-tau.vercel.app'],
     methods: ['GET', 'POST'],
   },
 });
