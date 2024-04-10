@@ -28,7 +28,6 @@ const ordersSlice = createSlice({
       state.openPage = action.payload;
     },
     createOrder(state, action: { payload: IOrder }) {
-      console.log(action.payload);
       state.items = [action.payload, ...state.items];
       if (state.count) state.count += 1;
     },

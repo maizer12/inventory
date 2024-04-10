@@ -19,7 +19,9 @@ const Home: FC = () => {
   const className = cn({ ['show-product']: !!openOrder }, 'anim-opacity', 'home');
 
   useEffect(() => {
-    dispatch(fetchOrders());
+    if (!isLoading) {
+      dispatch(fetchOrders());
+    }
   }, [search, openPage]);
 
   useEffect(() => {

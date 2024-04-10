@@ -32,7 +32,7 @@ export const OrderTable: FC = () => {
 
   return (
     <ul className="main-table scroll-style" onScroll={(e) => handleScroll(e)}>
-      {!!items.length && items.map((e) => <OrderItem key={e._id} item={e} />)}
+      {!!items.length && items.map((e, ind) => <OrderItem key={ind} item={e} />)}
       {isLoading && <Loader full={true} />}
     </ul>
   );
