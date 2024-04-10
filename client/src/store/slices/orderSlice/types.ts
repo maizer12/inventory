@@ -1,6 +1,6 @@
 import { IOrder } from '../../../models/IOrder';
 
-export interface CardsTypes {
+export interface OrdersTypes {
   items: IOrder[];
   isLoading: boolean;
   openPage: number;

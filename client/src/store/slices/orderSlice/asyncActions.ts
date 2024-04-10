@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { IFetchOrders } from './types';
 import { RootState } from '../..';
 
-export const fetchOrders = createAsyncThunk('cards/fetchOrders', async (_, { getState }) => {
+export const fetchOrders = createAsyncThunk('orders/fetchOrders', async (_, { getState }) => {
   const state = getState() as RootState;
   const search = state.optionsSlice.search;
   const page = state.orderSlice.openPage;

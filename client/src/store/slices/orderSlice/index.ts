@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { CardsTypes } from './types';
+import { OrdersTypes } from './types';
 import { fetchOrders } from './asyncActions';
 import { IOrder } from '../../../models/IOrder';
 
-const initialState: CardsTypes = {
+const initialState: OrdersTypes = {
   items: [],
   isLoading: false,
   openPage: 1,
@@ -14,8 +14,8 @@ const initialState: CardsTypes = {
   deleteOrderItem: null,
 };
 
-const cardsSlice = createSlice({
-  name: 'cardsSlice',
+const ordersSlice = createSlice({
+  name: 'ordersSlice',
   initialState,
   reducers: {
     setOpenProduct(state, action: { payload: IOrder | null }) {
@@ -67,6 +67,6 @@ export const {
   deleteOrder,
   setOpenPage,
   updateOrder,
-} = cardsSlice.actions;
+} = ordersSlice.actions;
 
-export default cardsSlice.reducer;
+export default ordersSlice.reducer;

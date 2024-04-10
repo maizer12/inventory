@@ -16,7 +16,7 @@ export const OrderTable: FC = () => {
     return <AlertTable variant="danger">{errorMessage}</AlertTable>;
   }
 
-  if (!items.length) {
+  if (!items.length && !isLoading) {
     return <AlertTable />;
   }
 
