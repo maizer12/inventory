@@ -6,7 +6,7 @@ Deployment Instructions
 
 ## Server
 
-[Server](https://js-task-fpix.onrender.com/api)
+[Server](https://js-task-fpix.onrender.com)
 
 ## Getting Started
 
