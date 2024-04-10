@@ -3,10 +3,10 @@ import express from 'express';
 import mongoose from 'mongoose';
 import orderRoutes from './routes/order-routes.js';
 import productRoutes from './routes/product-routes.js';
-import multer from 'multer';
+import upload from './utils/multer-сonfig.js';
 import cors from 'cors';
 import http from 'http';
-import { Server as SocketIo } from 'socket.io';
+import { init as initSocketService } from './services/socket-service.js';
 
 mongoose
   .connect(process.env.MONGO_KEY)
@@ -14,18 +14,6 @@ mongoose
   .catch((err) => console.log(err));
 
 const app = express();
-
-const storage = multer.diskStorage({
-  destination: (_, __, cd) => {
-    cd(null, 'uploads');
-  },
-  filename: (_, file, cd) => {
-    const arr = file.originalname.split('.');
-    cd(null, Date.now() + '-img.' + arr[arr.length - 1]);
-  },
-});
-
-const upload = multer({ storage });
 
 app.use(cors());
 app.use(express.json());
@@ -46,24 +34,8 @@ app.use('/api', orderRoutes);
 app.use('/api', productRoutes);
 
 const server = http.createServer(app);
-const io = new SocketIo(server, {
-  cors: {
-    origin: ['http://localhost:5173', 'https://js-task-tau.vercel.app'],
-    methods: ['GET', 'POST'],
-  },
-});
 
-let connectCount = 0;
-
-io.on('connection', (socket) => {
-  connectCount++;
-  io.emit('user count', connectCount);
-
-  socket.on('disconnect', () => {
-    connectCount--;
-    io.emit('user count', connectCount);
-  });
-});
+initSocketService(server);
 
 server.listen(process.env.PORT, (rej) => {
   if (rej) return console.log(rej);
