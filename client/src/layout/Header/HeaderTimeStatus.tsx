@@ -2,13 +2,14 @@ import { FC, useState, useEffect } from 'react';
 import { Clock9Icon, Users } from 'lucide-react';
 import io from 'socket.io-client';
 import { getDateTime } from '../../helpers/dateFormatter.ts';
+import { socketURL } from '../../api/index.ts';
 
 export const HeaderTimeStatus: FC = () => {
   const [onlineUsers, setOnlineUsers] = useState(0);
   const [dateTime, setDateTime] = useState(getDateTime());
 
   useEffect(() => {
-    const socket = io('http://localhost:4000');
+    const socket = io(socketURL);
 
     socket.on('user count', (count) => {
       setOnlineUsers(count);
