@@ -26,6 +26,7 @@ export const CreateProductModal: FC = () => {
   const typesItems = useTypeProduct();
   const statesItems = useStateProduct();
   const { openOrder, items } = useAppSelector((state) => state.orderSlice);
+  const [error, setError] = useState('');
 
   const dispatch = useAppDispatch();
 
@@ -36,6 +37,7 @@ export const CreateProductModal: FC = () => {
   const clickCreate = async (dataForm: IProductForm) => {
     if (!openOrder) return;
     const { _id: openOrderId } = openOrder;
+    setError('');
 
     try {
       setLoading(true);
@@ -63,6 +65,7 @@ export const CreateProductModal: FC = () => {
       reset();
       setImgLink('');
     } catch (err) {
+      setError(t('error.server.create'));
       console.error(err);
     } finally {
       setLoading(false);
@@ -70,7 +73,7 @@ export const CreateProductModal: FC = () => {
   };
 
   return (
-    <Modal setClose={closeModal} title={t('add-product.title')} className="create-modal-order">
+    <Modal setClose={closeModal} title={t('add-product.title')} className="create-modal-order" error={error}>
       <form className="create-modal" onSubmit={handleSubmit((data: IProductForm) => clickCreate(data))}>
         <div className="modal-padding">
           <Input

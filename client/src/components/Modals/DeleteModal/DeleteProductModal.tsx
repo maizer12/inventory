@@ -6,6 +6,7 @@ import axios from '../../../api';
 import { IProduct } from '../../../models/IProduct';
 import { Product } from '../../Product';
 import { updateOrder } from '../../../store/slices/orderSlice';
+import { useTranslation } from 'react-i18next';
 
 interface IProps {
   item: IProduct;
@@ -15,6 +16,8 @@ export const DeleteProductModal: FC<IProps> = ({ item }) => {
   const items = useAppSelector((state) => state.orderSlice.items);
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
+  const { t } = useTranslation();
+  const [error, setError] = useState('');
 
   const setClose = () => {
     dispatch(setDeleteProductItem(null));
@@ -22,6 +25,7 @@ export const DeleteProductModal: FC<IProps> = ({ item }) => {
 
   const deleteItem = async () => {
     try {
+      setError('');
       setLoading(true);
       const id = item._id;
       await axios.delete(`/product/${id}`);
@@ -38,14 +42,14 @@ export const DeleteProductModal: FC<IProps> = ({ item }) => {
       dispatch(updateOrder(updatedOrders));
       dispatch(deleteProduct(id));
     } catch (err) {
-      console.log(err);
+      setError(t('error.server.remove'));
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <DeleteModal setClose={setClose} clickDelete={deleteItem} isLoading={loading}>
+    <DeleteModal setClose={setClose} clickDelete={deleteItem} isLoading={loading} error={error}>
       <Product item={item} />
     </DeleteModal>
   );

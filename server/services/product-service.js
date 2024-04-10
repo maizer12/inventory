@@ -1,5 +1,7 @@
 import Product from '../models/product-model.js';
+import { getFilePath } from '../utils/file-utils.js';
 import orderService from './order-service.js';
+import { promises as fsPromises } from 'fs';
 
 class ProductService {
   async create(productData) {
@@ -48,16 +50,35 @@ class ProductService {
   }
 
   async delete(id) {
+    let product;
     try {
-      const product = await Product.findById(id);
+      product = await Product.findById(id);
+      if (!product) {
+        return { message: 'Product not found' };
+      }
+    } catch (err) {
+      console.error(`Error finding product with id ${id}:`, err);
+      throw new Error('Error finding product');
+    }
+
+    const { imageUrl } = product;
+    const filePath = getFilePath(imageUrl);
+
+    try {
       await orderService.removeToOrder(product);
       await Product.findByIdAndDelete(id);
-
-      return { message: 'is good' };
     } catch (err) {
-      console.log(err);
-      throw err;
+      console.error(`Error removing product with id ${id} or updating orders:`, err);
+      throw new Error('Error removing product or updating orders');
     }
+
+    try {
+      await fsPromises.unlink(filePath);
+    } catch (err) {
+      console.error(`Error deleting file at path ${filePath}:`, err);
+    }
+
+    return { message: 'Product deleted successfully' };
   }
 }
 

@@ -30,4 +30,20 @@
       color: var(--blue);
     }
   }
+
+  .error-message {
+    max-width: fit-content;
+    font-size: 16px;
+    margin: 0;
+    max-width: 450px;
+    margin: 0px 20px;
+    color: red;
+    font-size: 16px;
+    line-height: 1.1;
+    margin-bottom: 5px;
+
+    &::before {
+      content: '*';
+    }
+  }
 }

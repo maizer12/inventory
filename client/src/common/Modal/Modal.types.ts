@@ -5,4 +5,5 @@ export interface IModalProps {
   setClose: (a: boolean) => void;
   title: string;
   className?: string;
+  error: string;
 }

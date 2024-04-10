@@ -9,13 +9,14 @@ interface IProps {
   isLoading?: boolean;
   clickDelete: () => void;
   setClose: (bool: boolean) => void;
+  error: string;
 }
 
-export const DeleteModal: FC<IProps> = ({ children, setClose, clickDelete, isLoading = false }) => {
+export const DeleteModal: FC<IProps> = ({ children, setClose, clickDelete, isLoading = false, error }) => {
   const { t } = useTranslation();
 
   return (
-    <Modal title={t('remove-modal.title')} className="delete-modal" setClose={setClose}>
+    <Modal title={t('remove-modal.title')} className="delete-modal" setClose={setClose} error={error}>
       {children}
       <div className="d-flex justify-content-end modal-footer">
         <button className="delete-modal__close">{t('close.btn')}</button>

@@ -46,5 +46,7 @@
   "search.placeholder": "Search",
   "table.with": "with",
   "table.to": "to",
-  "table.more.text": "Additional title that I did not add to the database due to laziness"
+  "table.more.text": "Additional title that I did not add to the database due to laziness",
+  "error.server.create": "Please try again later or modify the information in your request, as we were unable to complete it this time.",
+  "error.server.remove": "Sorry, we couldn't delete the element this time. Please check if it's still in use or locked, and try again."
 }

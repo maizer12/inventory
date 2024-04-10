@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { useForm, Controller } from 'react-hook-form';
 
 export const CreateOrderModal: FC = () => {
+  const [error, setError] = useState('');
   const {
     register,
     handleSubmit,
@@ -26,11 +27,13 @@ export const CreateOrderModal: FC = () => {
 
   const clickCreate = async (dataForm: IOrder) => {
     try {
+      setError('');
       setLoading(true);
       const { data } = await axios.post<IOrder>('/orders', dataForm);
       dispatch(createOrder({ ...data }));
       reset();
     } catch (err) {
+      setError(t('error.server.create'));
       console.log(err);
     } finally {
       setLoading(false);
@@ -38,7 +41,7 @@ export const CreateOrderModal: FC = () => {
   };
 
   return (
-    <Modal setClose={setModal} title={t('add-order.title')}>
+    <Modal setClose={setModal} title={t('add-order.title')} error={error}>
       <form className="create-order" onSubmit={handleSubmit((data: IOrder) => clickCreate(data))}>
         <div className="modal-padding">
           <Input

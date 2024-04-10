@@ -6,7 +6,7 @@ import { HTag } from '../HTag/index.tsx';
 import { motion } from 'framer-motion';
 import { useAnimClose } from '../../hooks/useAnimClose.ts';
 
-export const Modal: FC<IModalProps> = ({ setClose, children, title, className = '' }) => {
+export const Modal: FC<IModalProps> = ({ setClose, children, title, className = '', error }) => {
   const handleClose = (a: null) => {
     setTimeout(() => setClose(!!a), 600);
   };
@@ -28,6 +28,7 @@ export const Modal: FC<IModalProps> = ({ setClose, children, title, className = 
           <HTag tag="h2" className="delete-order__title modal-padding">
             {title}
           </HTag>
+          {error && <p className={styles['error-message']}>{error}</p>}
           {children}
         </div>
       </div>
