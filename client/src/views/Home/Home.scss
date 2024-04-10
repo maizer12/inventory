@@ -139,3 +139,8 @@
     padding: 3% 6%;
   }
 }
+@media (max-height: 800px) {
+  .main-table {
+    height: 65vh;
+  }
+}
