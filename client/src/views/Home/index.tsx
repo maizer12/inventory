@@ -7,6 +7,7 @@ import { fetchOrders } from '../../store/slices/orderSlice/asyncActions';
 import './Home.scss';
 import { setCreateOrderModal, setOpenPage, setOpenProduct, updateOrder } from '../../store/slices/orderSlice';
 import { useTranslation } from 'react-i18next';
+import { useTitle } from '../../hooks/useTitle';
 
 const Home: FC = () => {
   const { t } = useTranslation();
@@ -17,6 +18,8 @@ const Home: FC = () => {
   );
   const { createProductModal } = useAppSelector((state) => state.productSlice);
   const className = cn({ ['show-product']: !!openOrder }, 'anim-opacity', 'home');
+
+  useTitle('home.page.title');
 
   useEffect(() => {
     if (!isLoading) {

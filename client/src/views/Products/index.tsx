@@ -6,6 +6,7 @@ import { useTypeProduct, useStatusProduct } from '../../components/Modals/Create
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchProducts } from '../../store/slices/productSlice/asyncActions';
 import { useTranslation } from 'react-i18next';
+import { useTitle } from '../../hooks/useTitle';
 
 const Products: FC = () => {
   const { t } = useTranslation();
@@ -15,6 +16,8 @@ const Products: FC = () => {
   const errorMessage = error ? t(error) : '';
   const search = useAppSelector((state) => state.optionsSlice.search);
   const dispatch = useAppDispatch();
+
+  useTitle('orders.page.title');
 
   useEffect(() => {
     dispatch(fetchProducts({ productStatus, productType }));
